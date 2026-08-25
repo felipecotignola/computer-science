@@ -52,10 +52,11 @@
 	int main(){
 		char s1[256],s2[256];
 		readline(s1,256),readline(s2,256);
-		if(verify(s1,s2)){
-			printf("SIM\n");
-		}	
-		else{
-			printf("NAO\n");
-		}
+			if(verify(s1,s2)){
+				printf("SIM\n");
+			}	
+			else{
+				printf("NAO\n");
+			}
+			readline(s1,256),readline(s2,256);
 	}

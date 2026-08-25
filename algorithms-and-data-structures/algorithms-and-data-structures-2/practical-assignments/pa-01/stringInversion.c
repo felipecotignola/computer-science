@@ -1,4 +1,5 @@
 	#include<stdio.h>
+	//tamanho string
 	int size(char* str){
 		int cont=0;
 		while(*str!='\0'){
@@ -7,6 +8,7 @@
 		}
 		return cont;
 	}
+	//le a string e remove \n
 	void readline(char* str,int tam){
 		fgets(str,tam,stdin);
 		str[size(str)-1]='\0';
