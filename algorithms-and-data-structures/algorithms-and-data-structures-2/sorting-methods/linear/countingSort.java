@@ -41,7 +41,7 @@ worst case: o(n+k)
 bad when k is too big
 migth spend to much memory deppending on k value
 
-best when theres many elements in one small gap
+best when theres many elements in one small value gap
 really fast quen k is small in comparison to n
 
 counts how many times each value appears then construct the array in order
