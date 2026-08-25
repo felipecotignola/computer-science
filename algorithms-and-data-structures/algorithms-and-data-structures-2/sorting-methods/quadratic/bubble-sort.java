@@ -9,8 +9,10 @@ for (int i = 0; i < n - 1; i++) {
     }
 }
 /*
-one of the worst sorting methods
+one of the worst sorting methods (extremely expensive cost-wise)
+
 stable
+
 best case: n²
 medium case: n²
 worst case: n²

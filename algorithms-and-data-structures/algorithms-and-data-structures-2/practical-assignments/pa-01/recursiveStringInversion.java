@@ -1,5 +1,7 @@
 	import java.util.Scanner;
 	public class recursiveStringInversion{
+		//metodo recursivo que recebe a string original e o indice de cada posicao dela(eu comeco passando o indice da ultima posicao e vou dando -- ate ser igual a 0 e retornar o caractere na posicao 0
+		//e eu vou construindo uma nova string a partir do inverso da original
 		static String recursion(String str,int index){
 			if(index==0){
 				return  ""+str.charAt(index);

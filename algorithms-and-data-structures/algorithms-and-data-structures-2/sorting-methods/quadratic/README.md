@@ -1,1 +1,1 @@
-comparacoes em pares
+comparacoes entre pares de elementos

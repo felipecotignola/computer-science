@@ -5,7 +5,10 @@
 				return n;
 			}
 			int soma=n%10;
+			//soma= ao ultimo digito atual
 			soma+=recursao(n/10);
+			//eu passo por recursao o numero original sobre 10 pra remover o caractere que eu acabei de atribuir a variavel soma
+			//soma eh igual ao retorno da soma dos proximos ultimos digitos finais
 			return soma;
 		}
 		public static void main(String[] args){

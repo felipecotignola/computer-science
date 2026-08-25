@@ -2,9 +2,12 @@
 	public class caeser_cypher{
 		public static String cypher(String string){
 			String s="";
+			//inicializo um objeto de String vazio
 			for(int i=0;i<string.length();i++){
 				char c=(char)(string.charAt(i)+3);
+				//pego o caractere atual e somo 3 
 				s+=c;
+				//como string eh um objeto em Java quando eu faço s+= eu to criando uma nova String com o valor da antiga mais o caractere atual
 			}
 			return s;
 		}
