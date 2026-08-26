@@ -17,4 +17,6 @@ in place
 best case: n
 medium case: n²
 worst case: n²
+
+worst case is when the array is inverted
 */
