@@ -1,16 +1,20 @@
-    int inicio = 0;
-    int fim = arr.length - 1;
-    while (inicio <= fim) {
-        int meio = inicio + (fim - inicio) / 2;
-        if (arr[meio] == target) {
-            return meio;
+int dir=array.length-1;
+int esq=0;
+int meio=(esq+dir+1)/2;
+while(esq<=dir){
+    if(array[meio]==resp){
+        return meio;
+    }
+    else{
+        if(vet[meio]>resp){
+            dir=meio-1;
+            meio=(esq+dir+1)/2;
         }
-        if (arr[meio] < target) {
-            inicio = meio + 1;
-        } else {
-            fim = meio - 1;
+        else{
+            esq=meio+1;
+            meio=(esq+dir+1)/2;
         }
     }
-
+}
 
  
