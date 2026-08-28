@@ -1,5 +1,5 @@
 	#include<stdio.h>
-	//tamanho da string
+	k//tamanho da string
 	int tamanho(char* str){
 		int cont=0;
 		while(*str!='\0'){
@@ -52,6 +52,7 @@
 	int main(){
 		char s1[256],s2[256];
 		readline(s1,256),readline(s2,256);
+		while(!(s1[0]=='F' && s1[1]=='I' && s1[2]=='M')){
 			if(verify(s1,s2)){
 				printf("SIM\n");
 			}	
@@ -59,4 +60,6 @@
 				printf("NAO\n");
 			}
 			readline(s1,256),readline(s2,256);
+		}
+		
 	}
