@@ -1,17 +1,20 @@
 	#include<stdio.h>
-	int recursao(int n){
-		if(n<10){
-			return n;
+	int somaDigitos(int n){
+		int soma=0;
+		//inicializo a soma com 0
+		while(n>10){
+			soma+=n%10;
+			//somo o ultimo digito atual ate n ser menor que 10
+			n/=10;	
+			//removo o digito somado dividindo por 10
 		}
-		//eu pego o ultimo digito atual e somo a soma final
-		int soma=n%10;
-		//
-		soma+=recursao(n/10);
-		//eu divido por 10 e removo o digito q ja atribui a minha soma e na proxima recursao eu mando o numero com um digito a menos e dps vai ir retornando a soma de cada digito quando chegar no caso base
-		return soma;
+		//dps do while necessariamente n eh menor que 10 ent ele eh o ultimo digito entao eu somo a soma e retorno a soma
+		soma+=n;
+		return soma;	
 	}
 	int main(){
 		int n;
-		scanf("%d",&n);
-		printf("%d",recursao(n));
+		while(scanf("%d",&n)!=EOF){
+			printf("%d\n",somaDigitos(n));
+		}
 	}
