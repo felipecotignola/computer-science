@@ -34,11 +34,14 @@
 		public static void main(String[] args){
 			Scanner sc=new Scanner(System.in);
 			String s=sc.next();
-			if(validation(s)){
-				System.out.println("SIM");
-			}
-			else{
-				System.out.println("NAO");	
+			while(!(s.length()==3 && s.charAt(0)=='F' && s.charAt(1)=='I' && s.charAt(2)=='M')){
+				if(validation(s)){
+					System.out.println("SIM");
+				}
+				else{
+					System.out.println("NAO");	
+				}
+				s=sc.next();
 			}	
 		}
 	}

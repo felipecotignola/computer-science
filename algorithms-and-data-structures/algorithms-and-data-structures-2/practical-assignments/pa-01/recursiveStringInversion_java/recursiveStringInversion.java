@@ -13,6 +13,9 @@
 		public static void main(String[] args){
 			Scanner sc=new Scanner(System.in);
 			String string=sc.nextLine();
-			System.out.printf("%s\n",recursion(string,(string.length())-1)); 	
+			while(!(string.length()==3 && string.charAt(0)=='F' && string.charAt(1)=='I' && string.charAt(2)=='M')){
+				System.out.printf("%s\n",recursion(string,(string.length())-1)); 	
+				string=sc.nextLine();
+			}
 		}
 	}

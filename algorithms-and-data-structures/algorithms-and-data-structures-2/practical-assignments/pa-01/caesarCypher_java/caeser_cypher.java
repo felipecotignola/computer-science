@@ -14,8 +14,9 @@
 		public static void main(String[] args){
 			Scanner sc=new Scanner(System.in);
 			String string=sc.nextLine();
-			while(sc.hasNext()){
+			while(!(string.charAt(0)=='F' && string.charAt(1)=='I' && string.charAt(2)=='M' &&string.length()==3)){
 				System.out.printf("%s\n",cypher(string));
+				string=sc.nextLine(); 	
 			}		
 		}
 	}

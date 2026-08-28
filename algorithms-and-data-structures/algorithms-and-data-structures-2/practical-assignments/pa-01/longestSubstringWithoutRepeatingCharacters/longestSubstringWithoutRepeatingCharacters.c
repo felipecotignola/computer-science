@@ -31,11 +31,14 @@
 	}
 	//leio a string e tiro o \n
 	void readline(char* str,int tam){
-		fgets(str,255,stdin);
+		fgets(str,tam,stdin);
 		str[strln(str)-1]='\0';
 	}
 	int main(){
 		char str[255];
 		readline(str,255);
-		printf("%d",substring(str));	
+		while(!(str[0]=='F' && str[1]=='I' && str[2]=='M' && strln(str)==3)){
+			printf("%d\n",substring(str));	
+			readline(str,255);
+		}
 	}

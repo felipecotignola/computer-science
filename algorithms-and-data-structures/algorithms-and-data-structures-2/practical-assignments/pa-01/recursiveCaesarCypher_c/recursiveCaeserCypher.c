@@ -11,7 +11,7 @@
 	//le string e tira caractere
 	void readline(char* str,int size){
 		fgets(str,size,stdin);
-		str[tam(str)-1]=='\0';
+		str[tam(str)-1]='\0';
 	}
 	//como estou trabalhando com ponteiro eu n preciso retornar nada cada alteracao na string eh feita diretamente no endereco do caractere
 	//eu vou passando a variavel str que aponta para o caractere atual somo 3 ao valor apontado por ele e passo por parametro o proximo endereco de caractere e eu faço isso ate o valor apontado pelo ponteiro ser '\0'
@@ -25,6 +25,9 @@
 	int main(){
 		char str[256];
 		readline(str,256);
-		cypher(str);
-		printf("%s\n",str);
+		while(!(tam(str)==3 && str[0]=='F' && str[1]=='I' && str[2]=='M')){
+			cypher(str);
+			printf("%s\n",str);
+			readline(str,256);
+		}
 	}

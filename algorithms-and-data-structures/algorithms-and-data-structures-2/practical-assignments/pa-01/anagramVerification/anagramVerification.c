@@ -1,5 +1,5 @@
 	#include<stdio.h>
-	k//tamanho da string
+	//tamanho da string
 	int tamanho(char* str){
 		int cont=0;
 		while(*str!='\0'){
@@ -44,22 +44,18 @@
 			return 0;	
 		}	
 	}
-	//le a string e remove o \n	
-	void readline(char* str,int tam){
-		fgets(str,tam,stdin);
-		str[tamanho(str)-1]='\0';
-	}
 	int main(){
 		char s1[256],s2[256];
-		readline(s1,256),readline(s2,256);
-		while(!(s1[0]=='F' && s1[1]=='I' && s1[2]=='M')){
+		scanf("%s",s1);
+		while(!(s1[0]=='F' && s1[1]=='I' && s1[2]=='M' && tamanho(s1)==3)){
+			scanf("%s",s2);
 			if(verify(s1,s2)){
 				printf("SIM\n");
 			}	
 			else{
 				printf("NAO\n");
 			}
-			readline(s1,256),readline(s2,256);
+			scanf("%s",s1);
 		}
 		
 	}
