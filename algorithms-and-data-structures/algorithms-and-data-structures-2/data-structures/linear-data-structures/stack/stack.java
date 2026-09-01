@@ -6,13 +6,13 @@ class Stack[
 		topo=-1,capacidade=n;
 		
 	}
-	void empilhar(int n){
+	void push(int n){
 		if(topo>=capacidade){
 			return;
 		}
 		array[++topo]=n;	
 	}
-	int desempilhar(){
+	int pop(){
 		if(topo<0){
 			return;
 		}
@@ -22,7 +22,7 @@ class Stack[
 	boolean isVazia(){
 		return topo==-1;
 	}
-	int tamanho(){
+	int size(){
 		return topo+1;
 	}
 	
