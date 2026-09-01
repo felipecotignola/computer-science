@@ -1,10 +1,10 @@
 	class List{
 		private int[] lista;
 		private int tamanho,capacidade;
-		public List(int n,int c){
+		public List(int n){
 			tam=0;
 			lista=new int[n];
-			capacidade=c;
+			capacidade=n;
 		}
 		void inserirInicio(int n){
 			if(tamanho>=capacidade){
