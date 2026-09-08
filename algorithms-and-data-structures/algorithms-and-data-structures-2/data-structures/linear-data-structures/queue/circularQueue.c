@@ -1,10 +1,9 @@
 	typedef struct{
 		int* array;
-		int fim,capacidade,quantidade;
+		int capacidade,quantidade;
 	}Fila;
 	void set(*Fila struct,int n){
 		(*struct).array=malloc(n*sizeof(int));
-		(*struct).fim=-1;
 		(*struct).capacidade=n;
 		(*struct).quantidade=0;
 	}
@@ -12,8 +11,8 @@
 		if((*struct).quantidade==(*struct).capacidade){
 			return;
 		}
-		(*struct).array[(*struct).++fim]=n;
-		(*struct).quantidade++;
+		(*struct).array[(*struct).quantidade]=n;
+		(*struct).quantidade=(*struct).quantidade+1%(*struct).capacidade;
 	}
 	int dequeue(*Fila struct){
 		if((*struct).quantidade==0){
