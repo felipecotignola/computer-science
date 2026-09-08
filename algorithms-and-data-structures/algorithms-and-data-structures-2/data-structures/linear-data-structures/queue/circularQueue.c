@@ -1,10 +1,9 @@
 	typedef struct{
 		int* array;
-		int inicio,fim,capacidade,quantidade;
+		int fim,capacidade,quantidade;
 	}Fila;
 	void set(*Fila struct,int n){
 		(*struct).array=malloc(n*sizeof(int));
-		(*struct).inicio=0;
 		(*struct).fim=-1;
 		(*struct).capacidade=n;
 		(*struct).quantidade=0;
