@@ -1,10 +1,8 @@
 	class Queue{
 		int[] array;
-		int inicio,fim,capacidade,quantidade;
+		int capacidade,quantidade;
 		public Queue(int n){
-			array=new int[n+1];
-			inicio=0;
-			fim=-1;
+			array=new int[n];
 			capacidade=n;
 			quantidade=0;
 		}
@@ -12,8 +10,8 @@
 			if(quantidade==capacidade){
 				return;
 			}	
-			array[(++fim%capacidade)]=n;
-			quantidade++;
+			array[quantidade]=n;
+			quantidade=quantidade+1%capacidade;
 		}
 		int remover(){
 			if(quantidade==0){
