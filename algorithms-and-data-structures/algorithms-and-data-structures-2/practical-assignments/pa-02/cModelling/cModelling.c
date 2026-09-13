@@ -43,7 +43,7 @@ typedef struct{
 	//bool turbo?????????
 	Data dataRegistro;
 }Veiculo;
-Veiculo parseVeicullo(char* str){
+Veiculo parseVeicullo(Veiculo* strct,char* str){
 	//splitar a string em atributos
 	//fazer o parse de cada atributos
 	//instanciar a data etc paapapapap
@@ -101,6 +101,38 @@ void setCo2(Veiculo* strct,double n){
 	(*strct).co2=n;	
 }
 //format veiculos
+int size(char* str){
+	int count=0;
+	while(*str!='\0'){
+		count++;
+		str++;
+	}
+	return count;
+}
+int readline(char* str,int tam,FILE* csv){
+	if(fgets(str,tam,csv)==NULL){
+		return 0;
+	}
+	if(str[size(str)-1]=='\n'){
+		str[size(str)-1]='\0';
+	}
+	return 1;
+}
 Veiculo* leitorCsv(){
-	
+	FILE* csv=fopen("veiculos.csv","r");
+	char linha[1024];
+	readline(linha,1024,csv);
+	int q=0;
+	while(readline(linha,1024,csv)!=0){
+		q++;
+	}	
+	rewind(csv);
+	Veiculo* veiculos=malloc(q*sizeof(Veiculo));
+	int i=0;
+	readline(linha,1024,csv);
+	while(readline(linha,1024,csv)!=0){
+		parseVeiculo(&veiculos[i],linha);
+		i++;
+	}
+	return veiculos;
 }
