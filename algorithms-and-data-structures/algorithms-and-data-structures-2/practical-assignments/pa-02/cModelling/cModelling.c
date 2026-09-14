@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 typedef struct{
 	int ano;
 	int mes;
@@ -25,8 +26,8 @@ int getDia(Data* struct){
 	return (*struct).dia;
 }
 char* formatData(Data* data){
-	char str[9];
-	sprintf(str,"%02d-%02d-%04d",(*data).dia,(*data).mes,(*data).ano;
+	char str[11];
+	sprintf(str,"%02d-%02d-%04d",(*data).dia,(*data).mes,(*data).ano);
 	return str;
 }
 typedef struct{
@@ -57,19 +58,19 @@ Veiculo parseVeiculo(char* str){
 	Veiculo strct;
 	strct.id=atoi(atributos[0]);
 	strcpy(strct.marca,atributos[1]);
-	strc(strct.modelo,atributos[2]);
+	strcpy(strct.modelo,atributos[2]);
 	strct.ano=atoi(atributos[3]);
 	strcpy(strct.categoria,atributos[4]);
 	strcpy(strct.combustivel,atributos[5]);
 	strct.cilindros=atoi(atributos[6]);
-	strct.cilindrada=atod(atributos[7]);
+	strct.cilindrada=atof(atributos[7]);
 	strcpy(strct.transmissao,atributos[8]);
 	strcpy(strct.tracao,atributos[9]);	
-	strct.consumoCidade=atod(atributos[10]);
-	strct.consumoEstrada=atod(atributos[11]);
-	strct.co2=atod(atributos[12]);
-	strct.turbo=strcomp(atributos[13],"true")==0;
-	strct.data=parseData(atributos[14]);
+	strct.consumoCidade=atof(atributos[10]);
+	strct.consumoEstrada=atof(atributos[11]);
+	strct.co2=atof(atributos[12]);
+	strct.turbo=strcmp(atributos[13],"true")==0;
+	strct.dataRegistro=parseData(atributos[14]);
 	return strct;	
 }
 int getId(Veiculo* strct){
@@ -81,7 +82,7 @@ char* getMarca(Veiculo* strct){
 char* getModelo(Veiculo* strct){
 	return (*strct).modelo;
 }
-int getAno(Veiculo* struct){
+int getAno(Veiculo* strct){
 	return (*strct).ano;
 }
 char* getCategoria(Veiculo* strct){
