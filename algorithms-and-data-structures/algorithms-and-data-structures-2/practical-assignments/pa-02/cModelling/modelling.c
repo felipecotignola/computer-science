@@ -153,7 +153,7 @@ int readline(char* str,int tam,FILE* csv){
 	}
 	return 1;
 }
-Veiculo* leitorCsv(){
+Veiculo* leitorCsv(int* size){
 	FILE* csv=fopen("veiculos.csv","r");
 	char linha[1024];
 	readline(linha,1024,csv);
@@ -161,6 +161,7 @@ Veiculo* leitorCsv(){
 	while(readline(linha,1024,csv)!=0){
 		q++;
 	}	
+	*size=q;
 	rewind(csv);
 	Veiculo* veiculos=malloc(q*sizeof(Veiculo));
 	int i=0;
