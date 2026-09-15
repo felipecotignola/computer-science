@@ -139,6 +139,13 @@ class Veiculo{
 	public void setCo2(double n){
 		co2=n;
 	}
+	public static Veiculo search(Veiculo[] array,int id){
+		for(int i=0;i<array.length;i++){
+			if(array[i].getId()==id){
+				return array[i];
+			}
+		}
+	}
 }
 class LeitorCsv{
 	public static Veiculo[] leitura(){
@@ -160,5 +167,116 @@ class LeitorCsv{
 		}
 		sc.close();
 		return veiculos;
+	}
+}
+class List{
+	private Veiculo[] array;
+	private int fim,capacidade;
+	public list(Veiculo[] array){
+		this.array=array;
+		fim=0;
+		capacidade=array.length;
+	}
+	void inserirInicio(Veiculo v){
+		if(fim>=capacidade){
+			return;
+		}
+		for(int i=fim;i>0;i--){
+			Array[i+1]=array[i];
+		}
+		array[0]=v;
+		fim++;
+	}
+	void inserirFim(Veiculo v){
+		if(fim>=capacidade){
+			return;
+		}
+		array[fim++]=v;
+	}
+	void inserirPos(Veiculo v,int pos){
+		if(fim>=capacidade){
+			return;
+		}
+		for(int i=fim;i>pos;i--){
+			array[i]=array[i-1];
+		}
+		array[pos]=v;
+		fim++;
+	}
+	int removerInicio(){
+		if(fim<=0){
+			return;
+		}
+		Veiculo resp=array[0];
+		for(int i=0;i<fim-1;i++){
+			array[i]=array[i+1];
+		}
+		fim--;
+		return resp;
+	}
+	int removerFim(){
+		if(fim<=0){
+			return;
+		}
+		return array[--fim];
+	}
+	int removerPos(int pos){
+		if(fim<=0){
+			return;
+		}
+		int resp=array[pos];
+		for(int i=pos;i<fim;i++){
+			array[i]=array[i+1];
+		}
+		fim--;
+		return resp;
+	}
+	void print(){
+		for(int i=0;i<fim;i++){
+			printf("%s\n",array[i].formatVeiculo());
+		}
+	}	
+}
+public class list{
+	public static void main(String[] args){
+		Veiculo[] array=leitorCsv();
+		List lista=new List(array);
+		for(int i=0;i<array.length;i++){
+			lista.inserirFim(array[i]);
+		}	
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		for(int i=0;i<n;i++){
+			String operacao=sc.next();
+			switch(operacao){
+				case "II":
+					int id=sc.nextInt();
+					Veiculo v=search(array,id);
+					lista.inserirInicio(v);
+					break;
+				case "I*":
+					int pos=sc.nextInt(),id=sc.nextInt();
+					Veiculo v=search(array,id);
+					lista.inserirPos(v,pos);
+					break;
+				case"IF":
+					int id=sc.nextInt();
+					Veiculo v=search(array,id);
+					lista.inserirFim(v);
+					break;
+				case "RI":
+					Veiculo v=lista.removerInicio();
+					System.out.printf("%s\n",v.format());
+					break;
+				case "R*":
+					int pos=sc.nextInt();
+					Veiculo v=lista.removerPos(pos);
+					System.out.printf("%s\n",v.format());
+					break;
+				case "RF":
+					Veiculo v=lista.removerFim();
+					System.out.printf("%s\n",v.format());	
+			}	
+		}
 	}
 }
