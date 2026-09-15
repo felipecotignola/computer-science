@@ -162,3 +162,35 @@ class LeitorCsv{
 		return veiculos;
 	}
 }
+
+public class insertion{
+	public boolean check(Veiculo key, Veiculo v){
+		if(key.getMarca().compareTo(v.getMarca())<0){
+			return true;
+		}	
+		else{
+			return false;
+		}
+	}
+	public void insertion(Veiculo[] array){
+		for(int i=1;i<array.length;i++){
+			Veiculo key=array[i];
+			int j=i-1;
+			while(j>=0 && check(key,array[j])){
+				array[j+1]=array[j];
+				j--;
+			}
+			array[j+1]=key;
+		}
+	}
+	public void print(Veiculo[] array){
+		for(int i=0;i<array.length;i++){
+			System.out.printf("%s\n",formatVeiculo(array[i]));
+		}
+	}
+	public static void main(String[] args){
+		Veiculo[] array=leitura();
+		insertion(array);
+		print(array);
+	}
+}
