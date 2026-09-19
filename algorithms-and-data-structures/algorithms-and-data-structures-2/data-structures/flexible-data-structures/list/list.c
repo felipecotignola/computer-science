@@ -43,39 +43,30 @@ void inserirFim(Lista* l,int x){
 	(*l).q++;
 }
 void inserirPos(Lista* l,int x,int pos){
-	if(pos==(*l).q){
-		inserirFim(l,x);
-	}
-	else if(pos==0){
-		inserirInicio(l,x);
-	}
-	else{
-		Celula* c=construtorCelula(x);
-		Celula* tmp=(*l).p->prox;
-		int i=0;
-		while(i<pos-1 && i<(*l).q){
-			tmp=tmp->prox;
-			i++;
+		if(pos>=0 && pos<=l->q){	
+			Celula* c=construtorCelula(x);
+			Celula* tmp=(*l).p;
+			int i=0;
+			while(i<pos-1 && i<(*l).q){
+				tmp=tmp->prox;
+				i++;
+			}
+			c->prox=tmp->prox;
+			tmp->prox=c;
+			(*l).q++;
+			if(pos==(*l).q){
+				l->u=c;
+			}	
 		}
-		c->prox=tmp->prox;
-		tmp->prox=c;
-		(*l).q++;
-	}
 }
 Celula* removerInicio(Lista* l){
+	Celula resp=(*l).p->prox;
+	(*l).p=resp->prox;
 	if((*l).q==1){
-		Celula* c=(*l).u;
-		(*l).p->prox=NULL;
 		(*l).u=(*l).p;
-		(*l).q--;
-		return c;
 	}
-	else{		
-		Celula* c=(*l).p->prox;
-		(*l).p->prox=c->prox;
-		(*l).q--;
-		return c;
-	}
+	(*l).q--;
+	return resp;
 }
 Celula* removerFim(Lista* l){
 	Celula* c=(*l)->u;	
@@ -90,13 +81,7 @@ Celula* removerFim(Lista* l){
 	return c;
 }
 Celula* removerPos(Lista* l,int pos){
-	if(pos==(*l).q-1){
-		removerFim(l);
-	}
-	else if(pos==0){
-		removerInicio(l);
-	}
-	else{
+	if(pos>=0 && pos<(*l).q){
 		Celula* tmp=(*l).p->prox;
 		Celula* resp;
 		int i=0;
