@@ -94,4 +94,12 @@ Celula* removerPos(Lista* l,int pos){
 		return resp;
 	}	
 }
+void print(Lista* l){
+	Celula* tmp=(*l).p->prox;
+	while(tmp!=NULL){
+		printf("%d ",tmp->valor);
+		tmp=tmp->prox;
+	}
+	printf("\n");
+}
 

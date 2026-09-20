@@ -93,4 +93,11 @@ class List{
 			return resp;	
 		}	
 	}
+	void print(){
+		Celula tmp=p->prox;
+		while(tmp!=null){
+			System.out.printf("%d ",tmo->valor);
+			tmp=tmp->prox;
+		}
+	}
 }
