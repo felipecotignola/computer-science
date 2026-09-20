@@ -47,7 +47,7 @@ class List{
 			Celula c=new Celula(x);
 			Celula tmp=p;
 			int i=0;
-			while(i<q && i<pos-1){
+			while(i<q){
 				tmp=tmp->prox;
 				i++;
 			}

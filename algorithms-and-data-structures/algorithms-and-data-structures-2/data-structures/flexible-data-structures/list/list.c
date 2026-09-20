@@ -47,7 +47,7 @@ void inserirPos(Lista* l,int x,int pos){
 			Celula* c=construtorCelula(x);
 			Celula* tmp=(*l).p;
 			int i=0;
-			while(i<pos-1 && i<(*l).q){
+			while(i<pos-1){
 				tmp=tmp->prox;
 				i++;
 			}
