@@ -14,5 +14,6 @@ class Queue{
       j--;
     }
     array[j+1]=x;
+    q++;
   }
 }
