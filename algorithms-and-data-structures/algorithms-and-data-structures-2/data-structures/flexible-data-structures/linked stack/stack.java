@@ -16,9 +16,9 @@ class Stack{
 		c.prox=topo;
 		topo=c;
 	}
-	void pop(){
+	int pop(){
 		if(topo!=null){
-			Celula resp=topo;
+			int resp=topo->valor;
 			topo=topo.prox;
 			return resp;
 		}

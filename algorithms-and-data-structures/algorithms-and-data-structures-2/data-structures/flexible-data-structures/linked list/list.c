@@ -21,20 +21,11 @@ Lista* construtorLista(){
 	(*l).q=0;
 	return l;
 }
-void inserirInicio(Lista* l,int x){
-	Celula* c=construtorCelula(x);
-	if((*l).q==0){
-		c->prox=(*l).u->prox;
-		(*l).u->prox=c;
-		(*l).u=c;
-		(*l).q++;
-	}
-	else{
-		c->prox=(*l).p->prox;
-		(*l).p->prox=c;
-		(*l).q++;	
-	}
-	
+void inserirInicio(Lista* l,int x){ 
+	Celula* c=construtorCelula();
+	c->prox=p;
+	(*l).p->valor=x;	
+	(*l).p=c;	
 }
 void inserirFim(Lista* l,int x){		
 	Celula* c=construtorCelula(x);
@@ -59,38 +50,44 @@ void inserirPos(Lista* l,int x,int pos){
 			}	
 		}
 }
-Celula* removerInicio(Lista* l){
-	Celula resp=(*l).p->prox;
-	(*l).p=resp->prox;
-	if((*l).q==1){
-		(*l).u=(*l).p;
+int removerInicio(Lista* l){
+	if(l->p->prox!=null){
+		Celula* tmp=(*l).p;
+		(*l).p=tmp->prox; 
+		free(tmp);
+		(*l).q--;
+		return (*l).p->valor;
 	}
-	(*l).q--;
-	return resp;
 }
-Celula* removerFim(Lista* l){
-	Celula* c=(*l)->u;	
-	Celula* tmp=l->prox;
-	int i=0;
-	while(i<(*l).q-1){
-		tmp=tmp->prox;	
-		i++;
+int removerFim(Lista* l){
+	if(l->u!=l->p){	
+		int resp=(*l)->u->valor;
+		Celula* antigoFim=l->u;
+		Celula* tmp=(*l).p->prox;
+		int i=0;	
+		while(i<(*l).q-1){
+			tmp=tmp->prox;
+			i++;
+		}
+		(*l).u=tmp;
+		(*l).u->prox=NULL;
+		free(antigoFim);
+		return resp;	
 	}
-	tmp->prox=NULL;
-	(*l).q--;
-	return c;
 }
-Celula* removerPos(Lista* l,int pos){
+int removerPos(Lista* l,int pos){
 	if(pos>=0 && pos<(*l).q){
 		Celula* tmp=(*l).p->prox;
-		Celula* resp;
+		int resp;
 		int i=0;
 		while(i<pos-1){
 			tmp=tmp->prox;
 			i++;
 		}
-		resp=tmp->prox;
-		tmp->prox=resp->prox;
+		Celula* referencia=tmp->prox;
+		resp=referencia->valor;
+		tmp->prox=referencia->prox;
+		free(referencia);
 		return resp;
 	}	
 }

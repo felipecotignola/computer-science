@@ -21,10 +21,12 @@ void push(Stack* stack,int x){
 	c->prox=stack->topo;
 	stack->topo=c;	
 }
-Celula* pop(Stack* stack){
+int pop(Stack* stack){
 	if(stack->topo!=NULL){	
-		Celula* resp=stack->topo; 
-		stack->topo=resp->prox;
+		int resp=stack->topo->valor; 
+		Celula* tmp=stack->topo;
+		stack->topo=tmp->prox;
+		free(tmp);
 		return resp;	
 	}
 }

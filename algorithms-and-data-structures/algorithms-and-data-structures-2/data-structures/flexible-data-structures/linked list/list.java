@@ -17,17 +17,10 @@ class List{
 		q=0;
 	}
 	void inserirInicio(int x){
-		Celula c=new Celula(x);	
-		if(q==0){
-			p->prox=c;
-			u=c;
-			q++;	
-		}
-		else{
-			c->prox=p->prox;
-			p->prox=c;
-			q++;
-		}
+		Celula c=new Celula();
+		c->prox=p;
+		p->valor=x;
+		p=c;	
 	}
 	void inserirFim(int x){
 		Celula c=new Celula(x);
@@ -59,16 +52,14 @@ class List{
 			}
 		}	
 	}
-	Celula removerInicio(){
-		Celula resp=p->prox;
-		p=resp->prox;
-		if(q==1){
-			u=p;
+	int removerInicio(){
+		if(p.prox!=null){
+			p=p->prox;
+			q--;
+			return p.valor;
 		}
-		q--;
-		return resp;
 	}
-	Celula removerFim(){
+	int removerFim(){
 		Celula resp=u;
 		Celula tmp=p.prox;
 		int i=0;
@@ -76,11 +67,11 @@ class List{
 			tmp=tmp.prox;
 			i++;	
 		}
-		tmp->prox=resp->prox;
+		tmp->prox=null
 		q--;
-		return resp;
+		return resp.valor;
 	}
-	Celula removerPos(int pos){
+	int removerPos(int pos){
 		if(pos>=0 && pos<q){
 			Celula tmp=p->prox;
 			int i=0;
@@ -90,7 +81,7 @@ class List{
 			}
 			Celula resp=tmp->prox;
 			tmp.prox=resp->prox;
-			return resp;	
+			return resp.valor;	
 		}	
 	}
 	void print(){
