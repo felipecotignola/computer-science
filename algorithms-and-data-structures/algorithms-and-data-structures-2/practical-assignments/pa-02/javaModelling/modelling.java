@@ -143,15 +143,15 @@ class Veiculo{
 class LeitorCsv{
 	public static Veiculo[] leitura(){
 		int q=0;
-		Scanner sc=new Scanner(new File(veiculos.csv))
+		Scanner sc=new Scanner(new File(veiculos.csv));
 		sc.nextLine();
 		while(sc.hasNextLine()){
 			sc.nextLine();
 			q++;
 		}
-		sc.close;
+		sc.close();
 		Veiculos[] veiculos=new Veiculos[q];
-		sc=new Scanner(new File(veiculos.csv);
+		sc=new Scanner(new File(veiculos.csv));
 		int i=0;
 		while(sc.hasNextLine()){
 			String s=sc.nextLine();

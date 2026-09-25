@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Anime Hunch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--HEADER-->
+    <header class="top-header">
+        <div class="logo">My Anime Hunch</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for more...">
+        </div>
+        <nav class="top-nav">
+            <a href="#">Home</a>
+            <a href="#">Discover</a>
+            <a href="#">My Lists</a>
+            <a href="#">Reviews</a>
+            <a href="#">Statistics</a>
+        </nav>
+    </header>
+    <!--MAIN (3 COLUNAS)-->
+    <div class="layout-container">
+        <!--COLUNA ESQUERDA -->
+        <aside class="sidebar-left">
+            <div class="user-profile">
+                <div class="avatar"></div>
+                <div class="user-info">
+                    <h2>Username</h2>
+                    <p>Member since: 2021</p>
+                </div>
+            </div>
+            <nav class="side-menu">
+                <a href="#" class="active">Home</a>
+                <a href="#">My Lists</a>
+                <a href="#">Reviews</a>
+                <a href="#">Discover</a>
+                <a href="#">Statistics</a>
+                <a href="#">Settings</a>
+            </nav>
+
+            <div class="quick-filters">
+                <span class="filter-title">Quick Filters</span>
+                <div class="filter-options">
+                    <a href="#">Currently Watching</a>
+                    <a href="#">Completed</a>
+                    <a href="#">On Hold</a>
+                    <a href="#">Dropped</a>
+                    <a href="#">Plan to Watch</a>
+                    <a href="#">Favorites</a>
+            </div>
+        </aside>
+
+        <!--COLUNA CENTRAL -->
+        <main class="main-content">
+            <!--BOAS VINDAS-->
+            <section class="hero-banner">
+                <h1>Welcome to My Anime Hunch</h1>
+                <p>Discover, track, and share your favorite anime with our community.</p>
+                <button class="tab-button">Explore</button>
+            </section>
+
+            <!--LISTA DE ANIMES E MANGAS-->
+            <section class="featured-section">
+                <div class="section-header">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" id="btn-anime"onclick="toggleFeatured('anime')">Featured Animes</button>
+                        <button class="tab-button" id="btn-manga" onclick="toggleFeatured('manga')">Featured Mangas</button>
+                    </div>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                
+                <!-- CARDS ANIME-->
+                 <div id="container-anime" class="cards-container">
+                    <div class="card">
+                        <img src="images/anime/hxh.webp" alt="Hunter x Hunter">
+                        <div class="card-info">
+                            <h3>Hunter x Hunter</h3>
+                            <p>Action, Adventure, Fantasy</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/anime/code-geass.webp" alt="Code Geass">
+                        <div class="card-info">
+                            <h3>Code Geass</h3>
+                            <p>Action, Drama, Mecha</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/anime/shingeki.webp" alt="Attack on Titan">
+                        <div class="card-info">
+                            <h3>Attack on Titan</h3>
+                            <p>Action, Drama, Fantasy</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/anime/bleach.jpg" alt="Bleach">
+                        <div class="card-info">
+                            <h3>Bleach</h3>
+                            <p>Action, Supernatural</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/anime/rezero.webp" alt="Re:Zero">
+                        <div class="card-info">
+                            <h3>Re:Zero</h3>
+                            <p>Action, Drama, Fantasy</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/anime/steins-gate.webp" alt="Steins;Gate">
+                        <div class="card-info">
+                            <h3>Steins;Gate</h3>
+                            <p>Action, Drama, Sci-Fi</p>
+                        </div>
+                    </div>
+                 </div>
+
+                <!-- CARDS MANGA-->
+                <div id="container-manga" class="cards-container" style="display: none;">
+                    <div class="card">
+                        <img src="images/manga/vagabond.webp" alt="Vagabond">
+                        <div class="card-info">
+                            <h3>Vagabond</h3>
+                            <p>Action, Adventure, Fantasy</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/manga/berserk.webp" alt="Berserk">
+                        <div class="card-info">
+                            <h3>Berserk</h3>
+                            <p>Action, Dark Fantasy</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/manga/chainsawman.webp" alt="Chainsaw Man">
+                        <div class="card-info">
+                            <h3>Chainsaw Man</h3>
+                            <p>Action, Horror, Supernatural</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- RECENTEMENTE ADICIONADOS -->
+             <section class="recent-table-section">
+                <div class="section-header">
+                    <h3>Lastly added</h3>
+                    <a href="#" class="see-all">See all</a>
+                </div>
+                <table class="recent-table">
+                    <thead>
+                        <tr>
+                            <th>Anime</th>
+                            <th>Status</th>
+                            <th>Nota</th>
+                            <th>Adicionado em</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Solo Leveling</strong><br><small>Ação, Fantasia</small></td>
+                            <td><span class="badge completed">Completado</span></td>
+                            <td>9.0</td>
+                            <td>20/09/2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>86</strong><br><small>Ação, Drama, Ficção Científica</small></td>
+                            <td><span class="badge completed">Completado</span></td>
+                            <td>8.5</td>
+                            <td>15/09/2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Made in Abyss</strong><br><small>Aventura, Drama, Fantasia</small></td>
+                            <td><span class="badge watching">Em andamento</span></td>
+                            <td>8.8</td>
+                            <td>12/09/2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        <!--COLUNA DIREITA -->
+
+        <!--FOOTER-->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-col">
+                <div class="logo">My Anime Hunch</div>
+                    <p>Your daily anime and manga tracker made by fans for fans.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <a href="#">Início</a>
+                    <a href="#">Descobrir</a>
+                    <a href="#">Minha Lista</a>
+                    <a href="#">Estatísticas</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Comunidade</h4>
+                    <a href="#">Discord</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">X</a>
+                    <a href="#">Sobre nós</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 My Anime Hunch. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
