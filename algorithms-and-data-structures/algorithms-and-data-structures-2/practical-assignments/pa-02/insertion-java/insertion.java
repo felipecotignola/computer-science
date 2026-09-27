@@ -146,7 +146,7 @@ class LeitorCsv {
         return veiculos;
     }
 }
-public class insertion(){
+public class insertion{
 	//condicao do insercao
 	public boolean condition(Veiculo key, Veiculo v){
 		if((key.marca).compareTo(v.marca)<0){

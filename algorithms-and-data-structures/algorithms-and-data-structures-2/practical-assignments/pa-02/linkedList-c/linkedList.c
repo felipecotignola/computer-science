@@ -2,13 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+// struct Data
 typedef struct {
     int ano;
     int mes;
     int dia;
 } Data;
 
-void strcopy(char* dest, const char* origem) {
+// strcpy
+void strcopy(char* dest, char* origem) {
     while (*origem != '\0') {
         *dest = *origem;
         dest++;
@@ -17,26 +19,31 @@ void strcopy(char* dest, const char* origem) {
     *dest = '\0';
 }
 
+// construtor Data
 void DataConstrutor(Data* data, int ano, int mes, int dia) {
     data->ano = ano;
     data->mes = mes;
     data->dia = dia;
 }
 
+// parse Data
 Data parseData(char* str) {
-    Data data = {0, 0, 0};
+    Data data;
     sscanf(str, "%d-%d-%d", &data.ano, &data.mes, &data.dia);
     return data;
 }
 
+// getters Data
 int getAnoData(Data* data) { return data->ano; }
 int getMesData(Data* data) { return data->mes; }
 int getDiaData(Data* data) { return data->dia; }
 
+// formatar Data
 void formatData(Data* data, char* str) {
-    sprintf(str, "%02d/%02d/%04d", data->dia, data->mes, data->ano);
+    sprintf(str, "%02d-%02d-%04d", data->dia, data->mes, data->ano);
 }
 
+// struct Veiculo
 typedef struct {
     int id;
     char marca[256];
@@ -55,12 +62,13 @@ typedef struct {
     Data dataRegistro;
 } Veiculo;
 
+// parse Veiculo
 Veiculo parseVeiculo(char* str) {
     char* atributos[15];
-    atributos[0] = strtok(str, ",\r\n");
+    atributos[0] = strtok(str, ",");
     int i = 1;
     while (i < 15) {
-        atributos[i] = strtok(NULL, ",\r\n");
+        atributos[i] = strtok(NULL, ",");
         i++;
     }
     Veiculo strct;
@@ -77,11 +85,12 @@ Veiculo parseVeiculo(char* str) {
     strct.consumoCidade = atof(atributos[10]);
     strct.consumoEstrada = atof(atributos[11]);
     strct.co2 = atof(atributos[12]);
-    strct.turbo = (strcmp(atributos[13], "true") == 0 || strcmp(atributos[13], "TRUE") == 0 || strcmp(atributos[13], "1") == 0);
+    strct.turbo = (strcmp(atributos[13], "true") == 0);
     strct.dataRegistro = parseData(atributos[14]);
     return strct;
 }
 
+// getters Veiculo
 int getId(Veiculo* strct) { return strct->id; }
 char* getMarca(Veiculo* strct) { return strct->marca; }
 char* getModelo(Veiculo* strct) { return strct->modelo; }
@@ -98,23 +107,29 @@ double getCo2(Veiculo* strct) { return strct->co2; }
 int getTurbo(Veiculo* strct) { return strct->turbo; }
 Data getDataRegistro(Veiculo* strct) { return strct->dataRegistro; }
 
+// setters Veiculo
 void setConsumoCidade(Veiculo* strct, double n) { strct->consumoCidade = n; }
 void setConsumoEstrada(Veiculo* strct, double n) { strct->consumoEstrada = n; }
 void setCo2(Veiculo* strct, double n) { strct->co2 = n; }
 
-char* formatVeiculo(Veiculo* veiculo, char* str) {
-    const char* turbo = veiculo->turbo ? "true" : "false";
-    char dataStr[30];
+// format Veiculo
+void formatVeiculo(Veiculo* veiculo, char* str) {
+    char turbo[10];
+    if (veiculo->turbo == 1) {
+        strcopy(turbo, "true");
+    } else {
+        strcopy(turbo, "false");
+    }
+    char dataStr[100];
     formatData(&(veiculo->dataRegistro), dataStr);
     sprintf(str, "[%d ## %s ## %s ## %d ## %s ## %s ## %d ## %lf ## %s ## %s ## %lf ## %lf ## %lf ## %s ## %s]", 
             getId(veiculo), getMarca(veiculo), getModelo(veiculo), getAnoVeiculo(veiculo), 
-            getCategoria(veiculo), getCombustivel(veiculo), getCilindros(veiculo), 
-            getCilindrada(veiculo), getTransmissao(veiculo), getTracao(veiculo), 
-            getConsumoCidade(veiculo), getConsumoEstrada(veiculo), getCo2(veiculo), 
-            turbo, dataStr);
-    return str;
+            getCategoria(veiculo), getCombustivel(veiculo), getCilindros(veiculo), getCilindrada(veiculo), 
+            getTransmissao(veiculo), getTracao(veiculo), getConsumoCidade(veiculo), getConsumoEstrada(veiculo), 
+            getCo2(veiculo), turbo, dataStr);
 }
 
+// get size
 int size(char* str) {
     int count = 0;
     while (*str != '\0') {
@@ -124,26 +139,29 @@ int size(char* str) {
     return count;
 }
 
+// ler linha
 int readline(char* str, int tam, FILE* csv) {
     if (fgets(str, tam, csv) == NULL) {
         return 0;
     }
     int len = size(str);
-    while (len > 0 && (str[len - 1] == '\n' || str[len - 1] == '\r')) {
+    if (len > 0 && str[len - 1] == '\n') {
         str[len - 1] = '\0';
-        len--;
+    }
+    if (len > 1 && str[len - 2] == '\r') {
+        str[len - 2] = '\0';
     }
     return 1;
 }
 
+// leitor csv e getter de quantidade de linhas por ponteiro
 Veiculo* leitorCsv(int* size) {
     FILE* csv = fopen("veiculos.csv", "r");
     if (csv == NULL) {
-        *size = 0;
-        return NULL;
+        csv = fopen("/tmp/veiculos.csv", "r");
     }
     char linha[1024];
-    readline(linha, 1024, csv);
+    readline(linha, 1024, csv); // Pula o cabeçalho
     int q = 0;
     while (readline(linha, 1024, csv) != 0) {
         q++;
@@ -152,7 +170,7 @@ Veiculo* leitorCsv(int* size) {
     rewind(csv);
     Veiculo* veiculos = (Veiculo*)malloc(q * sizeof(Veiculo));
     int i = 0;
-    readline(linha, 1024, csv);
+    readline(linha, 1024, csv); // Pula o cabeçalho
     while (readline(linha, 1024, csv) != 0 && i < q) {
         veiculos[i] = parseVeiculo(linha);
         i++;
@@ -161,30 +179,96 @@ Veiculo* leitorCsv(int* size) {
     return veiculos;
 }
 
-void selection(Veiculo* array, int n) {
-    for (int i = 0; i < n - 1; i++) {
-        int menor = i;
-        for (int j = i + 1; j < n; j++) {
-            if (strcmp(array[j].categoria, array[menor].categoria) < 0) {
-                menor = j;
-            }
+// Estrutura da Fila Circular
+typedef struct {
+    int inicio, fim, quantidade, capacidade;
+    Veiculo* array;
+} Queue;
+
+void construtorQueue(Queue* strct, int n) {
+    strct->inicio = 0;
+    strct->fim = 0;
+    strct->quantidade = 0;
+    strct->capacidade = n;
+    strct->array = (Veiculo*)malloc(n * sizeof(Veiculo));
+}
+
+Veiculo remover(Queue* strct) {
+    Veiculo resp = strct->array[strct->inicio];
+    strct->inicio = (strct->inicio + 1) % strct->capacidade;
+    strct->quantidade--;
+    printf("(R) %s %s\n", getMarca(&resp), getModelo(&resp));
+    return resp;
+}
+
+void inserir(Queue* strct, Veiculo v) {
+    if (strct->quantidade == strct->capacidade) {
+        remover(strct);
+    }
+    strct->array[strct->fim] = v;
+    strct->fim = (strct->fim + 1) % strct->capacidade;
+    strct->quantidade++;
+}
+
+void mostrar(Queue* strct) {
+    int i = strct->inicio;
+    for (int count = 0; count < strct->quantidade; count++) {
+        char str[1024];
+        formatVeiculo(&(strct->array[i]), str);
+        printf("%s\n", str);
+        i = (i + 1) % strct->capacidade;
+    }
+}
+
+Veiculo buscarPorId(Veiculo* veiculos, int total, int id) {
+    for (int i = 0; i < total; i++) {
+        if (getId(&veiculos[i]) == id) {
+            return veiculos[i];
         }
-        Veiculo temp = array[i];
-        array[i] = array[menor];
-        array[menor] = temp;    
-    }   
+    }
+    Veiculo vVazia;
+    memset(&vVazia, 0, sizeof(Veiculo));
+    return vVazia;
 }
 
 int main() {
-    int q = 0;
-    Veiculo* array = leitorCsv(&q);
-    if (array == NULL) return 1;
-    
-    selection(array, q);
-    char str[1000];
-    for (int i = 0; i < q; i++) {
-        printf("%s\n", formatVeiculo(&array[i], str));
+    int totalVeiculos = 0;
+    Veiculo* veiculos = leitorCsv(&totalVeiculos);
+
+    Queue fila;
+    construtorQueue(&fila, 5);
+
+    char entrada[256];
+
+    // Leitura dos registos iniciais até encontrar "FIM"
+    while (scanf("%s", entrada) == 1 && strcmp(entrada, "FIM") != 0) {
+        int id = atoi(entrada);
+        Veiculo v = buscarPorId(veiculos, totalVeiculos, id);
+        inserir(&fila, v);
     }
-    free(array);
+
+    // Leitura da quantidade de comandos
+    int numComandos = 0;
+    if (scanf("%d", &numComandos) == 1) {
+        for (int i = 0; i < numComandos; i++) {
+            char comando[10];
+            scanf("%s", comando);
+            if (strcmp(comando, "I") == 0) {
+                int id;
+                scanf("%d", &id);
+                Veiculo v = buscarPorId(veiculos, totalVeiculos, id);
+                inserir(&fila, v);
+            } else if (strcmp(comando, "R") == 0) {
+                remover(&fila);
+            }
+        }
+    }
+
+    // Apresentar registos restantes do primeiro ao último
+    mostrar(&fila);
+
+    free(fila.array);
+    free(veiculos);
+
     return 0;
 }
