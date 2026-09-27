@@ -183,13 +183,17 @@ void selection(Veiculos* array,int n){
 		array[menor]=temp;	
 	}	
 }
+//busca binaria
+int buscaBinaria(Veiculo* array,,int n){	
+	int esq=0,dir=n-1;
+	while(esq<=n){
+		int meio=(esq+dir)/2;
+	}		
+}
 int main(){
 	int q;
 	Veiculos* array=leitorCsv(&q);
 	selection(array);
-	char str[1000];
-	for(int i=0;i<q;i++){
-		formatVeiculo(array[i],str);
-		printf("%s\n",str);	
-	}
+	
 }
+

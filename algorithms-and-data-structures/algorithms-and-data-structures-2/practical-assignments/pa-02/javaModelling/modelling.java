@@ -119,6 +119,7 @@ class Veiculo {
     public void setCo2(double n) { co2 = n; }
 }
 
+//classe leitorCsv
 class LeitorCsv {
     public static Veiculo[] leitura() {
         java.io.File csv = new java.io.File("veiculos.csv");

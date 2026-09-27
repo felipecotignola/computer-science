@@ -119,6 +119,7 @@ class Veiculo {
     public void setCo2(double n) { co2 = n; }
 }
 
+//classe leitor csv
 class LeitorCsv {
     public static Veiculo[] leitorCsv() {
         java.io.File csv = new java.io.File("veiculos.csv");
@@ -146,6 +147,7 @@ class LeitorCsv {
     }
 }
 public class insertion(){
+	//condicao do insercao
 	public boolean condition(Veiculo key, Veiculo v){
 		if((key.marca).compareTo(v.marca)<0){
 			return true;
@@ -154,6 +156,7 @@ public class insertion(){
 		}	
 		
 	}
+	//insercao
 	public void insertion(Veiculo[] array){
 		for(int i=1;i<array.length;i++){
 			Veiculo key=array[i];
