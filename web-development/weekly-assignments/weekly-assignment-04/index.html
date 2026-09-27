@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Anime Hunch</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!--HEADER-->
     <header class="top-header">
         <div class="logo">My Anime Hunch</div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search for more...">
-        </div>
         <nav class="top-nav">
             <a href="#">Home</a>
             <a href="#">Discover</a>
@@ -20,6 +17,9 @@
             <a href="#">Reviews</a>
             <a href="#">Statistics</a>
         </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for more...">
+        </div>
     </header>
     <!--MAIN (3 COLUNAS)-->
     <div class="layout-container">
@@ -29,7 +29,7 @@
                 <div class="avatar"></div>
                 <div class="user-info">
                     <h2>Username</h2>
-                    <p>Member since: 2021</p>
+                    <p>Member since: 2026</p>
                 </div>
             </div>
             <nav class="side-menu">
@@ -119,7 +119,7 @@
                  </div>
 
                 <!-- CARDS MANGA-->
-                <div id="container-manga" class="cards-container" style="display: none;">
+                <div id="container-manga" class="cards-container">
                     <div class="card">
                         <img src="images/manga/vagabond.webp" alt="Vagabond">
                         <div class="card-info">
@@ -141,11 +141,127 @@
                             <p>Action, Horror, Supernatural</p>
                         </div>
                     </div>
+                    <div class="card">
+                        <img src="images/manga/Gintama_vol._01.png" alt="Gintama">
+                        <div class="card-info">
+                            <h3>Gintama</h3>
+                            <p>Action, Adventure, Fantasy</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/manga/Jujutsu_kaisen.jpg" alt="Jujutsu Kaisen">
+                        <div class="card-info">
+                            <h3>Jujutsu Kaisen</h3>
+                            <p>Action, Adventure, Fantasy</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/manga/monster.webp" alt="Monster">
+                        <div class="card-info">
+                            <h3>Monster</h3>
+                            <p>Mistery</p>
+                        </div>
                 </div>
             </section>
             <!-- RECENTEMENTE ADICIONADOS -->
+             <section class="recently-added-section">
+                <div class="section-header">
+                    <h2>Recently Added</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                
+                <!--ITENS -->
+                <div class="recent-list">
+                    <div class="recent-item">
+                        <div class="recent-details">
+                            <div class="recent-title-wrap">
+                                <h3>Bleach: Thousand-Year Blood War</h3>
+                                <span class="type-badge anime">Anime</span>
+                            </div>
+                            <p class="recent-meta">Episode 12 • Added 2 hours ago</p>
+                        </div>
+                        <span class="status-badge watching">Watching</span>
+                    </div>
+                    <div class="recent-item">
+                        <div class="recent-details">
+                            <div class="recent-title-wrap">
+                                <h3>Chainsaw Man</h3>
+                                <span class="type-badge manga">Manga</span>
+                            </div>
+                            <p class="recent-meta">Chapter 150 • Added 5 hours ago</p>
+                        </div>
+                        <span class="status-badge completed">Completed</span>
+                    </div>
+                    <div class="recent-item">
+                        <div class="recent-details">
+                            <div class="recent-title-wrap">
+                                <h3>Re:Zero Season 3</h3>
+                                <span class="type-badge anime">Anime</span>
+                            </div>
+                            <p class="recent-meta">Episode 1 • Added Yesterday</p>
+                        </div>
+                        <span class="status-badge plan-to-watch">Plan to Watch</span>
+                    </div>
+                </div>
+            </section>
+        </main>
         </main>
         <!--COLUNA DIREITA -->
+        <aside class="sidebar-right">
+            <!--progresso-->
+            <div class="widget">
+                <h3>Seu progresso</h3>
+                <div class="progress-box">
+                    <div class="circle-progress">
+                        <span>68%</span>
+                        <small>Total watched</small>
+                    </div>
+                    <ul class="progress-stats">
+                        <li><span>Completed</span><strong> 42</strong></li>
+                        <li><span>Currently Watching/Reading</span><strong> 15</strong></li>
+                        <li><span>On Hold</span><strong> 8</strong></li>
+                        <li><span>Watchlist</span><strong> 25</strong></li>
+                        <li><span>Dropped</span><strong> 3</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <!--bem avaliados-->
+            <div class="widget">
+                <h3>Top Rated Anime</h3>
+                <ul class="top-rated-list">
+                    <li><span>1. Fullmetal Alchemist</span></li>
+                    <li><span>2. Death Note</span></li>
+                    <li><span>3. Attack on Titan</span></li>
+                    <li><span>4. Steins;Gate</span></li>
+                    <li><span>5. Hunter x Hunter</span></li>
+                </ul>
+                <h3>Top Rated Manga</h3>
+                <ul class="top-rated-list">
+                    <li>
+                        <li><span>1. One Piece</span></li>
+                        <li><span>2. Berserk</span></li>
+                        <li><span>3. Vagabond</span></li>
+                        <li><span>4. Monster</span></li>
+                        <li><span>5. Vinland Saga</span></li>
+                    </li>
+                </ul>
+            </div>
+            <!-- popular genres-->
+             <div class="widget">
+                <h3>Popular Genres</h3>
+                <ul class="genre-list">
+                    <li><span>Action</span></li>
+                    <li><span>Adventure</span></li>
+                    <li><span>Comedy</span></li>
+                    <li><span>Drama</span></li>
+                    <li><span>Fantasy</span></li>
+                    <li><span>Horror</span></li>
+                    <li><span>Mystery</span></li>
+                    <li><span>Romance</span></li>
+                    <li><span>Sci-Fi</span></li>
+                    <li><span>Slice of Life</span></li>
+                </ul>
+        </aside>
 
         <!--FOOTER-->
         <footer>
@@ -155,7 +271,12 @@
                     <p>Your daily anime and manga tracker made by fans for fans.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Comunidade</h4>
+                    <h4>Browse</h4>
+                    <a href="#">Home</a>
+                    <a href="#">Discover</a>
+                    <a href="#">My Lists</a>
+                    <a href="#">Statistics</a>
+                    <h4>Comunity</h4>
                     <a href="#">Instagram</a>   
                     <a href="#">Discord</a>
                     <a href="#">X</a>
