@@ -168,3 +168,26 @@ Veiculo* leitorCsv(int* size) {
     fclose(csv);
     return veiculos;
 }
+void selection(Veiculos* array,int n){
+	for(int i=0;i<n-1;i++){
+		int menor=i;
+		for(int j=i+1;j<j;j++){
+			if(strcmp(array[j]->categoria,array[menor]->categoria)<0){
+				menor=j;
+			}
+		}
+		Veiculo temp=array[i];
+		array[i]=array[menor];
+		array[menor]=temp;	
+	}	
+}
+int main(){
+	int q;
+	Veiculos* array=leitorCsv(&q);
+	selection(array);
+	char str[1000];
+	for(int i=0;i<q;i++){
+		formatVeiculo(array[i],str);
+		printf("%s\n",str);	
+	}
+}

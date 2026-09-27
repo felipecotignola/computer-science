@@ -120,7 +120,7 @@ class Veiculo {
 }
 
 class LeitorCsv {
-    public static Veiculo[] leitura() {
+    public static Veiculo[] leitorCsv() {
         java.io.File csv = new java.io.File("veiculos.csv");
         Scanner sc = new Scanner(csv);
         sc.nextLine(); // Cabeçalho
@@ -144,4 +144,32 @@ class LeitorCsv {
         sc.close();
         return veiculos;
     }
+}
+public class insertion(){
+	public boolean condition(Veiculo key, Veiculo v){
+		if((key.marca).compareTo(v.marca)<0){
+			return true;
+		} else{
+			return false;
+		}	
+		
+	}
+	public void insertion(Veiculo[] array){
+		for(int i=1;i<array.length;i++){
+			Veiculo key=array[i];
+			int j=i-1;
+			while(j>=0 && condition(key,array[j])){
+				array[j+1]=array[j];
+				j--;
+			}
+			array[j+1]=key;
+		}
+	}
+	public static void main(String[] args){
+		Veiculo[] array=leitorCsv();
+		insertion(array);
+		for(int i=0;i<array.length;i++){
+			System.out.println(array[i].format());
+		}	
+	}
 }
