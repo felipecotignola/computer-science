@@ -168,3 +168,6 @@ Veiculo* leitorCsv(int* size) {
     fclose(csv);
     return veiculos;
 }
+int main(){
+	return 0;
+}
