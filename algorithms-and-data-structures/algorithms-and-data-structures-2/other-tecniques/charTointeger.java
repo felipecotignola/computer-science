@@ -1,2 +1,2 @@
 array[0]='a';
-array[0]-'a'=0;
+array[0]-'a'==0;
