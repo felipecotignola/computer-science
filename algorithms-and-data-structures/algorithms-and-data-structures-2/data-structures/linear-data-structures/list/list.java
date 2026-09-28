@@ -44,7 +44,7 @@ class List {
         }
         int resp = lista[0];
         tamanho--;
-        for (int i = 0; i < tamanho; i++) {
+        for (int i = 0; i < tamanho-1; i++) {
             lista[i] = lista[i + 1];
         }
         return resp;
@@ -63,7 +63,7 @@ class List {
         }
         int resp = lista[pos];
         tamanho--;
-        for (int i = pos; i < tamanho; i++) {
+        for (int i = pos; i < tamanho-1; i++) {
             lista[i] = lista[i + 1];
         }
         return resp;
