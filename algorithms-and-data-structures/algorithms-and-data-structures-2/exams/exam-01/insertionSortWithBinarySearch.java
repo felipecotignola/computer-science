@@ -1,16 +1,16 @@
-void binarySearch(int key,int j){
-	int esq=0,dir=j;
-	while(esq<=dir){
-		int meio=(esq+dir)/2;
-		if(array[meio]==key){
-			return meio;
+int binarySearch(int key,int j){
+	int left=0,right=j;
+	while(left<=right){
+		int mid=(left+right)/2;
+		if(array[mid]==key){
+			return mid;
 		}	
-		else if(array[meio]>key){
-			dir=meio-1;
+		else if(array[mid]>key){
+			right=mid-1;
 		}
-		else esq=meio+1;
+		else left=mid+1;
 	}
-	return meio;
+	return mid;
 }
 void insertion sort(){
 	for(int i=1;i<n;i++){
