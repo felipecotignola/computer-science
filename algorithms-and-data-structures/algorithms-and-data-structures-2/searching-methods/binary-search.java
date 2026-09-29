@@ -1,18 +1,15 @@
-int dir=array.length-1;
-int esq=0;
-int meio=(esq+dir+1)/2;
-while(esq<=dir){
-    if(array[meio]==resp){
-        return meio;
+int  left=0,right=array.length-1;
+while(left<=right){
+    int mid=(left+right+1)/2;
+    if(array[mid]==answer){
+        return mid;
     }
     else{
-        if(vet[meio]>resp){
-            dir=meio-1;
-            meio=(esq+dir+1)/2;
+        if(vet[mid]>answer){
+            right=mid-1;
         }
         else{
-            esq=meio+1;
-            meio=(esq+dir+1)/2;
+            left=mid+1;
         }
     }
 }
