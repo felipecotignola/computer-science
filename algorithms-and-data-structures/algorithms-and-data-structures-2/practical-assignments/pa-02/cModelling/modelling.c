@@ -113,16 +113,18 @@ void setConsumoEstrada(Veiculo* strct, double n) { strct->consumoEstrada = n; }
 void setCo2(Veiculo* strct, double n) { strct->co2 = n; }
 
 //format Veiculo
-void formatVeiculo(Veiculo* veiculo, char* str) {
-    char* turbo;
+char* formatVeiculo(Veiculo* veiculo) {
+    char str[1024];
+    char turbo[10];
     if (veiculo->turbo == 1) {
         strcopy(turbo, "true");
     } else {
         strcopy(turbo, "false");
     }
-    char* dataStr;
+    char dataStr[20];
     formatData(&(veiculo->dataRegistro), dataStr);
     sprintf(str, "[%d ## %s ## %s ## %d ## %s ## %s ## %d ## %lf ## %s ## %s ## %lf ## %lf ## %lf ## %s ## %s]", getId(veiculo), getMarca(veiculo), getModelo(veiculo), getAnoVeiculo(veiculo), getCategoria(veiculo), getCombustivel(veiculo), getCilindros(veiculo), getCilindrada(veiculo), getTransmissao(veiculo), getTracao(veiculo), getConsumoCidade(veiculo), getConsumoEstrada(veiculo), getCo2(veiculo), turbo, dataStr);
+     return str;
 }
 
 //get size
