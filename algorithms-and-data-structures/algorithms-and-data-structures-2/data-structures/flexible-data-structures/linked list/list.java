@@ -48,10 +48,16 @@ class List{
 	}
 	
 	int removeStart(){
-
+		int answ=head.next.value;
+		head.next=head.next.next;
+		q--;
+		return answ;
 	}
 	int removeEnd(){
+		Node* nav=head;
+		while(nav.next!=t){
 
+		}
 	}
 	int removePos(){
 
