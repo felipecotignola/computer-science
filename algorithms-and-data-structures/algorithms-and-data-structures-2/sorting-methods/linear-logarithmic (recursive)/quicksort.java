@@ -22,3 +22,11 @@ void quicksort(int left,int right){
 		quicksort(i,right);
 	}
 }
+/*
+	best/medium case: o(n*lg(n))
+		the array if divided by halve each function calling so the complexity is n times log n
+		
+	worst case: o(n²)
+		when the pivot is either the biggest or smallest element, so the partition gets completely unbalanced (one side with n-1 elements and the other empty), each calling of function removes only one number
+	
+*/
