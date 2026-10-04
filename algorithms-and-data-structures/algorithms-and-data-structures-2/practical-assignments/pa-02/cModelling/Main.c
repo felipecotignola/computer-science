@@ -147,6 +147,7 @@ int readline(char* str, int tam, FILE* csv) {
 	str[len-1]='\0';
 	return 1;
     }
+    return 1;
 }
 
 //leitor csv e getter de quantidade de linhas por ponteiro
