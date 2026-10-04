@@ -122,7 +122,8 @@ class Veiculo {
 //classe leitorCsv
 class LeitorCsv {
     public static Veiculo[] leitorCsv() { 
-	Scanner sc = new Scanner("veiculos.csv");
+	File input=new File("/tmp/veiculos.csv);
+	Scanner sc = new Scanner(input);
 	sc.nextLine(); // Cabeçalho
 	int q=0;
 	//quantas linhas tem
@@ -133,7 +134,7 @@ class LeitorCsv {
         sc.close();
 
         Veiculo[] veiculos = new Veiculo[q];
-        sc = new Scanner("arquivo.csv");
+        sc = new Scanner(input);
         sc.nextLine(); // Cabeçalho
         int i = 0;
         while (sc.hasNextLine()) {
@@ -144,4 +145,9 @@ class LeitorCsv {
         sc.close();
         return veiculos;
     }
+}
+public class main{
+	public statci void main(String[] args){
+		Veiculos[] veiculos=leitorCsv();
+	}
 }

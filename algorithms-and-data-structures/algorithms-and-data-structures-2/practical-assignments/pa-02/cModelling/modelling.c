@@ -113,9 +113,9 @@ void setConsumoEstrada(Veiculo* strct, double n) { strct->consumoEstrada = n; }
 void setCo2(Veiculo* strct, double n) { strct->co2 = n; }
 
 //format Veiculo
-char* formatVeiculo(Veiculo* veiculo) {
+void formatVeiculo(Veiculo* veiculo,char* strFinal) {
     char str[1024];
-    char turbo[10];
+    char turbo[6];
     if (veiculo->turbo == 1) {
         strcopy(turbo, "true");
     } else {
@@ -124,7 +124,7 @@ char* formatVeiculo(Veiculo* veiculo) {
     char dataStr[20];
     formatData(&(veiculo->dataRegistro), dataStr);
     sprintf(str, "[%d ## %s ## %s ## %d ## %s ## %s ## %d ## %lf ## %s ## %s ## %lf ## %lf ## %lf ## %s ## %s]", getId(veiculo), getMarca(veiculo), getModelo(veiculo), getAnoVeiculo(veiculo), getCategoria(veiculo), getCombustivel(veiculo), getCilindros(veiculo), getCilindrada(veiculo), getTransmissao(veiculo), getTracao(veiculo), getConsumoCidade(veiculo), getConsumoEstrada(veiculo), getCo2(veiculo), turbo, dataStr);
-     return str;
+     strcopy(str,strFinal);
 }
 
 //get size
@@ -150,17 +150,16 @@ int readline(char* str, int tam, FILE* csv) {
 }
 
 //leitor csv e getter de quantidade de linhas por ponteiro
-Veiculo* leitorCsv(int* size) {
-    FILE* csv = fopen("veiculos.csv", "r");
+Veiculo* leitorCsv(int* qtd) {
+    FILE* csv = fopen("/tmp/veiculos.csv", "r");
+    if(csv==NULL){ return NULL;}
     char linha[1024];
-    readline(linha, 1024, csv); // Pula o cabeçalho
-    int q = 0;
-    while (readline(linha, 1024, csv) != 0) {
-        q++;
+    readline(linha, 1024, csv); // Pula o cabeçalho 
+    while (readline(linha, 1024, csv) != 0){
+        (*qtd)++;
     }
-    *size=q;
     rewind(csv);
-    Veiculo* veiculos = (Veiculo*)malloc(q * sizeof(Veiculo));
+    Veiculo* veiculos = (Veiculo*)malloc(*qtd * sizeof(Veiculo));
     int i = 0;
     readline(linha, 1024, csv); // Pula o cabeçalho
     while (readline(linha, 1024, csv) != 0 && i < q) {
@@ -171,5 +170,7 @@ Veiculo* leitorCsv(int* size) {
     return veiculos;
 }
 int main(){
+	int qtd=0;	
+	Veiculo* array=leitorCsv(&qtd);
 	return 0;
 }
