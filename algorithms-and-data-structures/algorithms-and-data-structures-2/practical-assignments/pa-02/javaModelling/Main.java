@@ -147,7 +147,7 @@ class LeitorCsv {
         return veiculos;
     }
 }
-public class main{
+public class Main{
 	public static void main(String[] args){
 		Veiculo[] veiculos=LeitorCsv.leitorCsv();
 	}
