@@ -124,7 +124,7 @@ void formatVeiculo(Veiculo* veiculo,char* strFinal) {
     char dataStr[20];
     formatData(&(veiculo->dataRegistro), dataStr);
     sprintf(str, "[%d ## %s ## %s ## %d ## %s ## %s ## %d ## %lf ## %s ## %s ## %lf ## %lf ## %lf ## %s ## %s]", getId(veiculo), getMarca(veiculo), getModelo(veiculo), getAnoVeiculo(veiculo), getCategoria(veiculo), getCombustivel(veiculo), getCilindros(veiculo), getCilindrada(veiculo), getTransmissao(veiculo), getTracao(veiculo), getConsumoCidade(veiculo), getConsumoEstrada(veiculo), getCo2(veiculo), turbo, dataStr);
-     strcopy(str,strFinal);
+     strcopy(strFinal,str);
 }
 
 //get size
@@ -162,7 +162,7 @@ Veiculo* leitorCsv(int* qtd) {
     Veiculo* veiculos = (Veiculo*)malloc(*qtd * sizeof(Veiculo));
     int i = 0;
     readline(linha, 1024, csv); // Pula o cabeçalho
-    while (readline(linha, 1024, csv) != 0 && i < q) {
+    while (readline(linha, 1024, csv) != 0 && i < *qtd) {
         veiculos[i] = parseVeiculo(linha);
         i++;
     }

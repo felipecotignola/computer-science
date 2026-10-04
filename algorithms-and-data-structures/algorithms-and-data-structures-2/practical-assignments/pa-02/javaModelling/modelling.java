@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.io.File;
 
 //classe data
 class Data {
@@ -122,7 +123,7 @@ class Veiculo {
 //classe leitorCsv
 class LeitorCsv {
     public static Veiculo[] leitorCsv() { 
-	File input=new File("/tmp/veiculos.csv);
+	File input=new File("/tmp/veiculos.csv");
 	Scanner sc = new Scanner(input);
 	sc.nextLine(); // Cabeçalho
 	int q=0;
@@ -147,7 +148,7 @@ class LeitorCsv {
     }
 }
 public class main{
-	public statci void main(String[] args){
-		Veiculos[] veiculos=leitorCsv();
+	public static void main(String[] args){
+		Veiculo[] veiculos=LeitorCsv.leitorCsv();
 	}
 }
