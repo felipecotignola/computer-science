@@ -1,5 +1,5 @@
 void selection(List* l){
-	for(Celula* i=l->p->prox;i<l->u;i=i->prox){
+	for(Celula* i=l->p->prox;i!=l->u;i=i->prox){
 		Celula* smallest=i;
 		for(Celula* j=i->prox;j!=NULL;j=j->prox;){
 			if(j->value<smalles->value){
