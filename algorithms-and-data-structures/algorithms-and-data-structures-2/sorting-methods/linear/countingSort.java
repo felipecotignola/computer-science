@@ -1,4 +1,4 @@
-	static void countingSort(int[] array){
+	void countingSort(int[] array){
 		int min=array[0],max=array[0];
 		
 		//find min and max values

@@ -20,7 +20,8 @@ void heapfy(int[] array, int n, int i){
 	}
 }
 void merge sort(int[] array){
-	//heap constructor
+	int n=array.length;
+	//heap constructor, starts from the last node thats why we initialize i as (n/2)-1
 	for(int i=(n/2)-1,i>=0;i--){
 		//heap on current node
 		heapfy(array,n,i);
