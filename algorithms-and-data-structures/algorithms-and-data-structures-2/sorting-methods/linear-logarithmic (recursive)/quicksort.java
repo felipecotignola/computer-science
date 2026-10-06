@@ -27,6 +27,8 @@ void quicksort(int left,int right){
 		the array if divided by halve each function calling so the complexity is n times log n
 		
 	worst case: o(n²)
-		when the pivot is either the biggest or smallest element, so the partition gets completely unbalanced (one side with n-1 elements and the other empty), each calling of function removes only one number
+		 when the pivot is either the biggest or smallest element, so the partition gets completely unbalanced (one side with n-1 elements and the other empty), each calling of function removes only one number
+	horrible for linked list since we need direct access to the pivot and in linked lists this would cost o(n) instead of o(1)
+
 	
 */
