@@ -19,7 +19,7 @@ void heapfy(int[] array, int n, int i){
 		heapfy(array,n,biggest);
 	}
 }
-void merge sort(int[] array){
+void heapsort(int[] array){
 	int n=array.length;
 	//heap constructor, starts from the last node thats why we initialize i as (n/2)-1
 	for(int i=(n/2)-1,i>=0;i--){
@@ -42,5 +42,6 @@ void merge sort(int[] array){
 	o(n*lg(n))
 	while quicksort has a quadratic worst case, heaps worst case is still n*log(n)	
 	in average quicksort is better than heap, but its worse case is quadratic
+	unstable
 	
 */
