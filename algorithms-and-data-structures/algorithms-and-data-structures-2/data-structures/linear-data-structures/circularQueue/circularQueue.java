@@ -1,21 +1,21 @@
 class Queue {
     int[] array;
-    int beggining, pos, capacity, quantity;
+    int beggining, end, capacity, quantity;
 
     public Queue(int n) {
         array = new int[n];
         capacity = n;
         quantity = 0;
         beggining = 0;
-        pos = 0;
+        end = 0;
     }
 
     void enqueue(int x) {
         if (quantity == capacity) {
             return;
         }
-        array[pos] = x;
-        pos = (pos + 1) % capacity;
+        array[end] = x;
+        end = (end + 1) % capacity;
         quantity++;
     }
 
