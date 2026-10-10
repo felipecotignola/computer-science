@@ -3,32 +3,32 @@
 
 typedef struct {
     int* array;
-    int inicio, pos, capacidade, quantidade;
-} Fila;
+    int beggining, pos, capacity, quantity;
+} Queue;
 
-void set(Fila* fila, int n) {
-    fila->array = malloc(n * sizeof(int));
-    fila->capacidade = n;
-    fila->quantidade = 0;
+void set(Queue* queue, int n) {
+    queue->array = malloc(n * sizeof(int));
+    queue->capacity = n;
+    fila->quantity = 0;
     fila->pos = 0;
-    fila->inicio = 0;
+    fila->beggining = 0;
 }
 
-void enqueue(Fila* fila, int n) {
-    if (fila->quantidade == fila->capacidade) {
+void enqueue(Queue* queue, int x) {
+    if (queue->quantity == queue->capacity) {
         return;
     }
-    fila->array[fila->pos] = n;
-    fila->pos = (fila->pos + 1) % fila->capacidade;
-    fila->quantidade++;
+    Queue->array[queue->pos] = x;
+    Queue->pos = (queue->pos + 1) % queue->capacity;
+    queue->quantity++;
 }
 
-int dequeue(Fila* fila) {
-    if (fila->quantidade == 0) {
+int dequeue(Queue* queue) {
+    if (queue->quantity == 0) {
         return -1;
     }
-    int resp = fila->array[fila->inicio];
-    fila->inicio = (fila->inicio + 1) % fila->capacidade;
-    fila->quantidade--;
-    return resp;
+    int answ = queue->array[queue->beggining];
+    queue->beggining = (queue->beggining + 1) % queueu->capacity;
+    queue->quantity--;
+    return answ;
 }
