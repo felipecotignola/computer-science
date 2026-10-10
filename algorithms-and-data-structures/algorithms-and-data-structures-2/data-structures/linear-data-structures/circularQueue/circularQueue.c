@@ -3,14 +3,14 @@
 
 typedef struct {
     int* array;
-    int beggining, pos, capacity, quantity;
+    int beggining, end, capacity, quantity;
 } Queue;
 
 void set(Queue* queue, int n) {
     queue->array = malloc(n * sizeof(int));
     queue->capacity = n;
     fila->quantity = 0;
-    fila->pos = 0;
+    fila->end = 0;
     fila->beggining = 0;
 }
 
@@ -18,8 +18,8 @@ void enqueue(Queue* queue, int x) {
     if (queue->quantity == queue->capacity) {
         return;
     }
-    Queue->array[queue->pos] = x;
-    Queue->pos = (queue->pos + 1) % queue->capacity;
+    queue->array[queue->end] = x;
+    queue->end = (queue->end + 1) % queue->capacity;
     queue->quantity++;
 }
 
