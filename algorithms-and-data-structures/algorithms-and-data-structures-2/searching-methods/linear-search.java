@@ -1,6 +1,8 @@
-	for(int i=0;i<n;i++){
+int answ;
+for(int i=0;i<n;i++){
 		if(array[i]==target){
+			answ=i;
 			i=n;
-			return i;
+			return answ;
 		}
 	}
