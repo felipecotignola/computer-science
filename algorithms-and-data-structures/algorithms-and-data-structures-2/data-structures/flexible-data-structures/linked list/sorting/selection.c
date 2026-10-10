@@ -1,7 +1,7 @@
 void selection(List* l){
-	for(Celula* i=l->p->prox;i!=l->u;i=i->prox){
-		Celula* smallest=i;
-		for(Celula* j=i->prox;j!=NULL;j=j->prox;){
+	for(Node* i=l->h->next;i!=l->t;i=i->next){
+		Node* smallest=i;
+		for(Node* j=i->next;j!=NULL;j=j->next;){
 			if(j->value<smalles->value){
 				smallest=j;
 			}
