@@ -5,7 +5,7 @@ for(int i=0;i<n-1;i++){
       smallest=j;
     }
   }
-  swap(i,smallest);
+  swap(array,i,smallest);
 }
 
 /*
