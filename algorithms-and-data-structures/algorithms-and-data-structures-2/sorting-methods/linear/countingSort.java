@@ -45,4 +45,6 @@ best when theres many elements in one small value gap
 really fast quen k is small in comparison to n
 
 counts how many times each value appears then construct the array in order
+
+out of place
 */
