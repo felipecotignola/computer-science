@@ -1,15 +1,15 @@
-typedef struct Celula{
-	int valor;
-	struct Celula* prox;
-}Celula;
-Celula* newCelula(int x){
-	Celula* c=malloc(sizeof(Celula));
-	c->valor=x;
-	c->prox=NULL;
-	return c;
+typedef struct Node{
+	int value;
+	struct Node* next;
+}Node;
+Node* newNode(int x){
+	Node* n=malloc(sizeof(Celula));
+	n->value=x;
+	n->next=NULL;
+	return n;
 }
 typedef struct{
-	Celula* topo;
+	Node* top;
 }Stack;
 Stack* newStack(int x){
 	Stack* s=malloc(sizeof(Stack));
@@ -18,14 +18,14 @@ Stack* newStack(int x){
 	return s;	
 }
 void push(Stack* s,int x){
-	Celula* c=newCelula(x);
-	c->prox=s->topo;
-	s->topo=c;
+	Node* n=newNode(x);
+	n->next=s->top;
+	s->top=n;
 }
 int pop(Stack* s){
-	int resp=s->topo->valor;
-	Celula tmp=s->topo;
-	s->topo=s->topo->prox;
+	int answ=s->top->value;
+	Node* tmp=s->top;
+	s->top=s->top->next;
 	free(tmp);
-	return resp;
+	return answ;
 }
