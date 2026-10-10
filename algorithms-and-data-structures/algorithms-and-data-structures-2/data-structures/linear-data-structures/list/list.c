@@ -2,98 +2,98 @@
 #include <stdlib.h>
 
 typedef struct {
-    int tam, capacidade;
-    int *lista;
-} list;
+    int size, capacity;
+    int *list;
+} List;
 
-void construtor(list *Struct, int capacidade) {
-    Struct->tam = 0;
-    Struct->capacidade = capacidade;
-    Struct->lista = malloc(capacidade * sizeof(int));
+void set(List* list, int n) {
+    list->size = 0;
+    list->capacity = n;
+    list->list = malloc(n * sizeof(int));
 }
 
-void inserirInicio(list *Struct, int n) {
-    if (Struct->tam >= Struct->capacidade) {
+void insertBeggining(List* l, int x) {
+    if (l->size >= l->capacity) {
         return;
     }
 
-    for (int i = Struct->tam; i > 0; i--) {
-        Struct->lista[i] = Struct->lista[i - 1];
+    for (int i = l->size; i > 0; i--) {
+        l->list[i] = l->list[i - 1];
     }
 
-    Struct->lista[0] = n;
-    Struct->tam++;
+    l->list[0] = x;
+    l->size++;
 }
 
-void inserirPos(list *Struct, int n, int pos) {
-    if (Struct->tam >= Struct->capacidade || pos < 0 || pos > Struct->tam) {
+void insertPos(List* l, int x, int pos) {
+    if (l->size >= l->capacity || pos < 0 || pos > l->size) {
         return;
     }
 
-    for (int i = Struct->tam; i > pos; i--) {
-        Struct->lista[i] = Struct->lista[i - 1];
+    for (int i = l->size; i > pos; i--) {
+        l->list[i] = l->list[i - 1];
     }
 
-    Struct->lista[pos] = n;
-    Struct->tam++;
+    l->list[pos] = x;
+    l->size++;
 }
 
-void inserirFim(list *Struct, int n) {
-    if (Struct->tam >= Struct->capacidade) {
+void insertEnd(List* l, int x) {
+    if (l->size >= l->capacity) {
         return;
     }
 
-    Struct->lista[Struct->tam] = n;
-    Struct->tam++;
+    l->list[l->size] = x;
+    l->size++;
 }
 
-int removerInicio(list *Struct) {
-    if (Struct->tam <= 0) {
+int removeBeggining(List* l) {
+    if (l->size <= 0) {
         return -1;
     }
 
-    int resp = Struct->lista[0];
+    int answ = l->list[0];
 
-    for (int i = 0; i < Struct->tam - 1; i++) {
-        Struct->lista[i] = Struct->lista[i + 1];
+    for (int i = 0; i < l->size - 1; i++) {
+        l->list[i] = l->list[i + 1];
     }
 
-    Struct->tam--;
+    l->size--;
 
-    return resp;
+    return answ;
 }
 
-int removerPos(list *Struct, int pos) {
-    if (pos < 0 || pos >= Struct->tam) {
+int removePos(List* l, int pos) {
+    if (pos < 0 || pos >= l->size) {
         return -1;
     }
 
-    int resp = Struct->lista[pos];
+    int answ = l->list[pos];
 
-    for (int i = pos; i < Struct->tam - 1; i++) {
-        Struct->lista[i] = Struct->lista[i + 1];
+    for (int i = pos; i < l->size - 1; i++) {
+        l->list[i] = l->list[i + 1];
     }
 
-    Struct->tam--;
+    l->size--;
 
-    return resp;
+    return answ;
 }
 
-int removerFim(list *Struct) {
-    if (Struct->tam <= 0) {
+int removeEnd(List* l) {
+    if (l->size <= 0) {
         return -1;
     }
 
-    int resp = Struct->lista[Struct->tam - 1];
+    int answ = l->list[l->size - 1];
 
-    Struct->tam--;
+    l->size--;
 
-    return resp;
+    return answ;
 }
 
-void print(list *Struct) {
-    for (int i = 0; i < Struct->tam; i++) {
-        printf("%d ", Struct->lista[i]);
+void print(List* l) {
+    for (int i = 0; i < l->size; i++) {
+        printf("%d ", l->list[i]);
     }
 
     printf("\n");
