@@ -2,35 +2,35 @@
 #include <stdlib.h>
 
 typedef struct {
-    int* vet;
-    int topo, capacidade;
-} stack;
+    int* stack;
+    int top, capacity;
+} Stack;
 
-void construtor(stack* pilha, int n) {
-    pilha->topo = -1;
-    pilha->capacidade = n;
-    pilha->vet = malloc(n * sizeof(int));
+void set(Stack* s, int n) {
+    s->top = -1;
+    s->capacity = n;
+    s->stack = malloc(n * sizeof(int));
 }
 
-void push(stack* pilha, int n) {
-    if (pilha->topo >= pilha->capacidade - 1) {
+void push(Stack* s, int x) {
+    if (s->top >= s->capacity - 1) {
         return;
     }
-    pilha->vet[++(pilha->topo)] = n;
+    s->array[++(s->top)] = n;
 }
 
-int pop(stack* pilha) {
-    if (pilha->topo < 0) {
+int pop(Stack* s) {
+    if (s->top < 0) {
         return -1;
     }
-    int resp = pilha->vet[pilha->topo--];
-    return resp;
+    int answ = s->array[s->top--];
+    return answ;
 }
 
-int isVazia(stack* pilha) {
-    return pilha->topo == -1;
+int isEmpty(Stack* s) {
+    return s->top == -1;
 }
 
-int size(stack* pilha) {
-    return pilha->topo + 1;
+int size(Stack* s) {
+    return s->top + 1;
 }
