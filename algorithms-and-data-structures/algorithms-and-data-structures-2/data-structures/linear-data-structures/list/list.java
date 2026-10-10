@@ -1,78 +1,78 @@
 class List {
-    private int[] lista;
-    private int tamanho, capacidade;
+    private int[] list;
+    private int size, capacity;
 
     public List(int n) {
-        tamanho = 0;
-        lista = new int[n];
-        capacidade = n;
+        size = 0;
+        list = new int[n];
+        capacity = n;
     }
 
-    void inserirInicio(int n) {
-        if (tamanho >= capacidade) {
+    void insertBeggining(int x) {
+        if (size >= capacity) {
             return;
         }
-        for (int i = tamanho; i > 0; i--) {
-            lista[i] = lista[i - 1];
+        for (int i = size; i > 0; i--) {
+            list[i] = list[i - 1];
         }
-        lista[0] = n;
-        tamanho++;
+        list[0] = x;
+        size++;
     }
 
-    void inserirFim(int n) {
-        if (tamanho >= capacidade) {
+    void insertEnd(int x) {
+        if (size >= capacity) {
             return;
         }
-        lista[tamanho] = n;
-        tamanho++;
+        list[size] = x;
+        size++;
     }
 
-    void inserirPos(int n, int pos) {
-        if (tamanho >= capacidade || pos < 0 || pos > tamanho) {
+    void insertPos(int x, int pos) {
+        if (size >= capacity || pos < 0 || pos > size) {
             return;
         }
-        for (int i = tamanho; i > pos; i--) {
-            lista[i] = lista[i - 1];
+        for (int i = size; i > pos; i--) {
+            list[i] = list[i - 1];
         }
-        lista[pos] = n;
-        tamanho++;
+        list[pos] = x;
+        size++;
     }
 
-    int removerInicio() {
-        if (tamanho == 0) {
+    int removeBeggining() {
+        if (size == 0) {
             return -1;
         }
-        int resp = lista[0];
-        tamanho--;
-        for (int i = 0; i < tamanho-1; i++) {
-            lista[i] = lista[i + 1];
+        int answ = list[0];
+        for (int i = 0; i < size-1; i++) {
+            list[i] = list[i + 1];
         }
-        return resp;
+        size--;
+        return answ;
     }
 
-    int removerFim() {
-        if (tamanho == 0) {
+    int removeEnd() {
+        if (size == 0) {
             return -1;
         }
-        return lista[--tamanho];
+        return list[--size];
     }
 
-    int removerPos(int pos) {
-        if (tamanho == 0 || pos < 0 || pos >= tamanho) {
+    int removePos(int pos) {
+        if (size == 0 || pos < 0 || pos >= size) {
             return -1;
         }
-        int resp = lista[pos];
-        tamanho--;
+        int answ = list[pos];
         for (int i = pos; i < tamanho-1; i++) {
-            lista[i] = lista[i + 1];
+            list[pos] = lista[i + 1];
         }
-        return resp;
+        size--;
+        return answ;
     }
 
     void print() {
         System.out.print("[ ");
-        for (int i = 0; i < tamanho; i++) {
-            System.out.print(lista[i] + " ");
+        for (int i = 0; i < size; i++) {
+            System.out.print(list[i] + " ");
         }
         System.out.print("]");
     }
