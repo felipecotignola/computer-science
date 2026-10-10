@@ -1,11 +1,11 @@
-for(int i=array.inicio;i!=array.fim;i=(i+1)%array.capacidade){
+for(int i=queue.beggining;i!=queue.end;i=(i+1)%queue.capacity){
 	int smallest=i;
-	for(int j=(i+1)%array.capacidade;j!=(array.fim+1)%capacidade;j=(j+1)%array.capacidade){
-		if(array[j]<array[smallest]){
+	for(int j=(i+1)%queue.capacity;j!=queue.end;j=(j+1)%queue.capacity){
+		if(queue[j]<queue[smallest]){
 			smallest=j;
 		}
 	}
-	int tmp=array[i];
-	array[i]=array[smallest];
-	array[smallest]=tmp;
+	int tmp=queue[i];
+	queue[i]=queue[smallest];
+	queue[smallest]=tmp;
 }
