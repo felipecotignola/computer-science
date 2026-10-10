@@ -51,6 +51,7 @@ void insertPos(List* l,int x,int pos){
 		if(node->next==NULL){
 			l->tail=node;
 		}
+		l->q++;
 	}
 }
 
