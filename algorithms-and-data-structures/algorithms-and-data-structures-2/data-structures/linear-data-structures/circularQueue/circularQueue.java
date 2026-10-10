@@ -1,31 +1,31 @@
 class Queue {
     int[] array;
-    int inicio, pos, capacidade, quantidade;
+    int beggining, pos, capacity, quantity;
 
     public Queue(int n) {
         array = new int[n];
-        capacidade = n;
-        quantidade = 0;
-        inicio = 0;
+        capacity = n;
+        quantity = 0;
+        beggining = 0;
         pos = 0;
     }
 
-    void inserir(int n) {
-        if (quantidade == capacidade) {
+    void enqueue(int x) {
+        if (quantity == capacity) {
             return;
         }
-        array[pos] = n;
-        pos = (pos + 1) % capacidade;
-        quantidade++;
+        array[pos] = x;
+        pos = (pos + 1) % capacity;
+        quantity++;
     }
 
-    int remover() {
-        if (quantidade == 0) {
+    int dequeue() {
+        if (quantity == 0) {
             return -1;
         }
-        int resp = array[inicio];
-        inicio = (inicio + 1) % capacidade;
-        quantidade--;
-        return resp;
+        int answ = array[beggining];
+        beggining = (beggining + 1) % capacity;
+        quantity--;
+        return answ;
     }
 }
