@@ -2,10 +2,10 @@ class Queue {
     int q, n;
     int[] array;
 
-    public Queue(int x) {
+    public Queue(int n) {
         q = 0;
-        n = x;
-        array = new int[x];
+        this.n = n;
+        array = new int[n];
     }
 
     void enqueue(int x) {
