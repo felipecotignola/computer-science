@@ -1,33 +1,33 @@
 class Stack {
     int[] array;
-    int topo, capacidade;
+    int top, capacity;
 
     public Stack(int n) {
         array = new int[n];
-        topo = -1;
-        capacidade = n;
+        top = -1;
+        capacity = n;
     }
 
-    void push(int n) {
-        if (topo >= capacidade - 1) {
+    void push(int x) {
+        if (top >= capacity - 1) {
             return;
         }
-        array[++topo] = n;
+        array[++top] = n;
     }
 
     int pop() {
-        if (topo < 0) {
+        if (top < 0) {
             return -1;
         }
-        int resp = array[topo--];
-        return resp;
+        int answ = array[top--];
+        return answ;
     }
 
     boolean isVazia() {
-        return topo == -1;
+        return top == -1;
     }
 
     int size() {
-        return topo + 1;
+        return top + 1;
     }
 }
