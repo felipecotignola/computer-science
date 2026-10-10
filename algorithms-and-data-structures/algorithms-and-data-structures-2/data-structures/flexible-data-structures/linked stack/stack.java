@@ -1,24 +1,24 @@
-class Celula{
-	int elemento;
-	Celula* prox;
-	public Celula(int x){
-		elemento=x;
-		prox=null;
+class Node{
+	int value;
+	Node* next;
+	public Node(int x){
+		value=x;
+		next=null;
 	}
 }
 class Stack{
-	Celula* topo;
+	Node* top;
 	public Stack(int x){
-		topo=new Celula(x);
+		top=new Celula(x);
 	}
 	void push(int x){
-		Celula c=new Celula(x);
-		c.prox=topo;
-		topo=c;
+		Node n=new Node(x);
+		n.next=top;
+		top=n;
 	}
 	int pop(){
-		int resp=topo.elemento;
-		topo=topo->prox;
-		return resp;
+		int answ=top.value;
+		top=top->next;
+		return answ;
 	}
 }
