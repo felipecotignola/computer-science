@@ -1,9 +1,9 @@
-for(int i=(array.beggining+1)%array.capacity;i!=array.end;i=(i+1)%array.capacity){
-	int key=array[i];
-	int j=(i-1+array.capacity)%array.capacity;
-	while(j!=(array.beggining-1+array.capacity)%array.capacity && key<array[j]){
-		array[(j+1)%array.capacity]=array[j];
-		j=(j-1+array.capacity)%array.capacity;	
+for(int i=(queue.beggining+1)%queue.capacity;i!=(queue.end)%queue.capacity;i=(i+1)%queue.capacity){
+	int key=queue[i];
+	int j=(i-1+queue.capacity)%queue.capacity;
+	while(j!=(queue.beggining-1+queue.capacity)%queue.capacity && key<queue[j]){
+		queue[(j+1)%queue.capacity]=queue[j];
+		j=(j-1+queue.capacity)%queue.capacity;	
 	}
-	array[(j+1)%array.capacity]=key;
+	queue[(j+1)%queue.capacity]=key;
 }
