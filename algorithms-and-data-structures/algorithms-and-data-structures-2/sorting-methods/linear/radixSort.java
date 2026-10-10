@@ -12,4 +12,5 @@ doesnt use comparisons
 very eficient for numbers with a limited number of digits
 
 sorts several nummbers using their digits processing one digit at time
+out of place
 */
