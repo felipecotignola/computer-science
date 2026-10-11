@@ -56,29 +56,34 @@ void insertPos(List* l,int x,int pos){
 }
 
 int removeStart(List* l){
-	Node* temp=l->head->next;
-	int answ=temp->value;
-	l->head->next=temp->next
-	temp->next=NULL
-	free(temp);
-	l->q--;
-	return answ;
+	if(l->q!>0){
+		Node* temp=l->head->next;
+		int answ=temp->value;
+		l->head->next=temp->next
+		temp->next=NULL
+		free(temp);
+		l->q--;
+		return answ;
+	}
 }
 int removeEnd(List* l){
-	Node* temp=l->tail;
-	int answ=temp->value;
-	Node* nav=l->head;
-	while(nav->next!=l->tail){
-		nav=nav->next;
-	}	
-	nav->next=NULL;
-	l->tail=nav;
-	free(temp);
-	l->q--;
-	return answ;
+	if(l->q>0){
+		Node* temp=l->tail;
+		int answ=temp->value;
+		Node* nav=l->head;
+		while(nav->next!=l->tail){
+			nav=nav->next;
+		}	
+		nav->next=NULL;
+		l->tail=nav;
+		free(temp);
+		l->q--;
+		return answ;
+	}
 }
 int removePos(List* l,int pos){
-	if(pos>=0 && pos<l->q){
+	if(l->q>0){
+		if(pos>=0 && pos<l->q){
 		Node* nav=l->head;
 		int i=0;
 		while(i<pos){
@@ -95,6 +100,7 @@ int removePos(List* l,int pos){
 			l->tail=nav;
 		}
 		return answ;
-	}	
+	}
+	}
 }
 
