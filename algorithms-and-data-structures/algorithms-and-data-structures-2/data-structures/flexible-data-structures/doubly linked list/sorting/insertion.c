@@ -1,11 +1,11 @@
-void sort(List* l){
-	for(Celula* i=l->prox->prox;i!=NULL;i=i->prox){
+void insertionsort(List* l){
+	for(Node* i=l->h->next;i!=NULL;i=i->next){
 		int key=i->value;
-		Celula* j=i->ant;
-		while(j!=l->p && key<j->value){
-			j->prox->value=j->value;
+		Node* j=i->ant;
+		while(j!=l->h && key<j->value){
+			j->next->value=j->value;
 			j=j->ant;
 		}
-		j->prox->value=key;
+		j->next->value=key;
 	}
 }
