@@ -12,7 +12,7 @@ void interscale(int* array, int left,int middle,int right){
 	}
 	k=left;
 	while(i<n1 && j<n2){
-		if(aux1[i]<aux2[j]{
+		if(aux1[i]<=aux2[j]){
 			array[k]=aux1[i];
 			i++;
 		} else{
@@ -33,11 +33,11 @@ void interscale(int* array, int left,int middle,int right){
 	}
 }
 void mergesort(int* array, int left,int right){
-	if(left<dir){
+	if(left<right){
 		int middle=(left+right)/2;
-		mergesort(esq,middle);
-		mergesort(middle+1,right);
-		interscale(left,middle,right);
+		mergesort(array, left,middle);
+		mergesort(array,middle+1,right);
+		interscale(array,left,middle,right);
 	}
 }
 /*
