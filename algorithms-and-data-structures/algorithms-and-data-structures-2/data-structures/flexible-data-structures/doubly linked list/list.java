@@ -56,18 +56,38 @@ class List{
 
 	int removeStart(){
 		if(q>0){
-			int answ=h.next.value;
-			h.next=h.next.next;
-			q--;
-			
+			Node tmp=h.next;
+			int answ=tmp.value;
+			h.next=tmp.next;
+			if(h.next!=null){
+				h.next.ant=h;
+			}
+			tmp.next=null;
+			tmp.ant=null;
+			q--;	
 			return answ;
 		}
 	}
 	int removeEnd(){
-
+		Node tmp=t;
+		t=tmp.ant;
+		t.next=null;
+		tmp.ant=null;
+		q--;
 	}
-	int removePos(){
-
+	int removePos(int pos){
+		Node nav=h;
+		int i=0;
+		while(i<pos){
+			nav=nav.next;
+			i++;	
+		}
+		Node tmp=nav.next;
+		nav.next=tmp.next;
+		if(nav.next!=null){
+			nav.next.ant=nav;
+		}	
+		q--;		
 	}
 	void print(){
 		for(Node i=h->next;i!=null;i=i->next){
