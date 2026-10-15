@@ -4,9 +4,9 @@
 
 //struct Data
 typedef struct {
-    int ano;
-    int mes;
     int dia;
+    int mes;
+    int ano;
 } Data;
 
 //strcpy
@@ -20,16 +20,16 @@ void strcopy(char* dest, char* origem) {
 }
 
 //construtor Data
-void DataConstrutor(Data* data, int ano, int mes, int dia) {
-    data->ano = ano;
-    data->mes = mes;
+void DataConstrutor(Data* data, int dia, int mes, int ano) {
     data->dia = dia;
+    data->mes = mes;
+    data->ano = ano;
 }
 
 //parse Data
 Data parseData(char* str) {
     Data data;
-    sscanf(str, "%d-%d-%d", &data.ano, &data.mes, &data.dia);
+    sscanf(str, "%d-%d-%d", &data.dia, &data.mes, &data.ano);
     return data;
 }
 
