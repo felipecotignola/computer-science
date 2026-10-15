@@ -8,18 +8,18 @@ class Data {
     private int dia;
 
     //construtor data
-    public Data(int ano, int mes, int dia) {
-        this.ano = ano;
-        this.mes = mes;
+    public Data(int dia, int mes, int ano) {
         this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
     }
     
     //parse data
     public static Data parseData(String s) {
         String[] atributos = s.split("-");
-        int ano = Integer.parseInt(atributos[0]);
+        int dia = Integer.parseInt(atributos[0]);
         int mes = Integer.parseInt(atributos[1]);
-        int dia = Integer.parseInt(atributos[2]);
+        int ano = Integer.parseInt(atributos[2]);
         return new Data(ano, mes, dia);
     }
     
