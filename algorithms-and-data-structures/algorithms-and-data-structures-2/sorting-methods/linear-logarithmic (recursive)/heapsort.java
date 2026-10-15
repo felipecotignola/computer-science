@@ -15,7 +15,7 @@ void heapfy(int[] array, int n, int i){
 	//it had sons and one of them were bigger so biggest equals its index making it differ from the original node index
 	//its sons were smaller
 	if(biggest!=i){
-		swap(array[i],array[biggest]);
+		swap(array,i,biggest);
 		heapfy(array,n,biggest);
 	}
 }
@@ -28,7 +28,7 @@ void heapsort(int[] array){
 	}
 	//sorting/reconstruct/heapfy subarray
 	for(int i=n-1;i>0;i--){
-		swap(array[0],array[i];
+		swap(array,0,i;
 		//heap on root
 		heapfy(array,n,0);
 	}
