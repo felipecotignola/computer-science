@@ -21,7 +21,7 @@ class Data {
         int dia = Integer.parseInt(atributos[0]);
         int mes = Integer.parseInt(atributos[1]);
         int ano = Integer.parseInt(atributos[2]);
-        return new Data(ano, mes, dia);
+        return new Data(dia, mes, ano);
     }
     
     //formatar data
@@ -160,7 +160,8 @@ class Veiculo {
 		heapfy(array,i,array.length);
 	}
 	for(int i=array.length-1;i>0;i--){
-		
+		swap(array,0,i);
+		heapfy(array,0,i);	
 	}
     }
 }
