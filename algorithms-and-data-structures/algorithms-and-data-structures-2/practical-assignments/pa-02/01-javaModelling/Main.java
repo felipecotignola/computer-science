@@ -18,10 +18,10 @@ class Data {
     //parse data
     public static Data parseData(String s) {
         String[] atributos = s.split("-");
-        int dia = Integer.parseInt(atributos[0]);
+        int ano = Integer.parseInt(atributos[0]);
         int mes = Integer.parseInt(atributos[1]);
-        int ano = Integer.parseInt(atributos[2]);
-        return new Data(ano, mes, dia);
+        int dia = Integer.parseInt(atributos[2]);
+        return new Data(dia, mes, ano);
     }
     
     //formatar data

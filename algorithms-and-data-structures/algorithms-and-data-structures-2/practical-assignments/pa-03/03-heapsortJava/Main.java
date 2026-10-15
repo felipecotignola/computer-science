@@ -4,9 +4,9 @@ import java.io.FileNotFoundException;
 
 //classe data
 class Data {
-    private int ano;
-    private int mes;
     private int dia;
+    private int mes;
+    private int ano;
 
     //construtor data
     public Data(int dia, int mes, int ano) {
@@ -18,9 +18,9 @@ class Data {
     //parse data
     public static Data parseData(String s) {
         String[] atributos = s.split("-");
-        int dia = Integer.parseInt(atributos[0]);
+        int ano = Integer.parseInt(atributos[0]);
         int mes = Integer.parseInt(atributos[1]);
-        int ano = Integer.parseInt(atributos[2]);
+        int dia = Integer.parseInt(atributos[2]);
         return new Data(dia, mes, ano);
     }
     
@@ -136,7 +136,7 @@ class Veiculo {
 		maior=esq;
 	}
 	else if(esq<n && array[esq].getCo2()==array[maior].getCo2()){
-		if(array[esq].getTransmissao().compareTo(array[maior].getTransmissao())<0){
+		if(array[esq].getTransmissao().compareTo(array[maior].getTransmissao())>0){
 			maior=esq;
 		}	
 	}
@@ -144,7 +144,7 @@ class Veiculo {
 		maior=dir;
 	}
 	else if(dir<n && array[dir].getCo2()==array[maior].getCo2()){
-		if(array[dir].getTransmissao().compareTo(array[maior].getTransmissao())<0){
+		if(array[dir].getTransmissao().compareTo(array[maior].getTransmissao())>0){
 			maior=dir;
 		}
 	}
