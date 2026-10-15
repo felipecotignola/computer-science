@@ -29,7 +29,7 @@ void DataConstrutor(Data* data, int dia, int mes, int ano) {
 //parse Data
 Data parseData(char* str) {
     Data data;
-    sscanf(str, "%d-%d-%d", &data.dia, &data.mes, &data.ano);
+    sscanf(str, "%d-%d-%d", &data.ano, &data.mes, &data.dia);
     return data;
 }
 
