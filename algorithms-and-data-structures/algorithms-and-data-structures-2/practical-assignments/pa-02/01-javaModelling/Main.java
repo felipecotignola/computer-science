@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileNotFoundException;	
 
 //classe data
 class Data {
@@ -122,7 +123,7 @@ class Veiculo {
 
 //classe leitorCsv
 class LeitorCsv {
-    public static Veiculo[] leitorCsv() { 
+    public static Veiculo[] leitorCsv() throws FileNotFoundException { 
 	File input=new File("/tmp/veiculos.csv");
 	Scanner sc = new Scanner(input);
 	sc.nextLine(); // Cabeçalho
@@ -148,7 +149,7 @@ class LeitorCsv {
     }
 }
 public class Main{
-	public static void main(String[] args){
+	public static void main(String[] args) throws FileNotFoundException {
 		Veiculo[] veiculos=LeitorCsv.leitorCsv();
 	}
 }
