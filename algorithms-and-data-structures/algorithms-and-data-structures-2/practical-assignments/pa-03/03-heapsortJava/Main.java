@@ -109,7 +109,14 @@ class Veiculo {
     public double getCo2() { return co2; }
     public boolean getTurbo() { return turbo; }
     public Data getDataRegistro() { return dataRegistro; }
-
+    public static Veiculo getVeiculo(Veiculo[] array,int id){
+	for(int i=0;i<array.length;i++){
+		if(array[i].getId()==id){
+			return array[i];
+		}
+	}
+	return null;
+    }
     //formatar veiculo
     public String format() {
         return String.format("[%d ## %s ## %s ## %d ## %s ## [%s] ## %d ## %.1f ## %s ## %s ## %.2f ## %.2f ## %.1f ## %b ## %s]", id, marca, modelo, ano, categoria, combustivel, cilindros, cilindrada, transmissao, tracao, consumoCidade, consumoEstrada, co2, turbo, dataRegistro.format());
@@ -155,11 +162,11 @@ class Veiculo {
 
     }
 	
-    public static void heapsort(Veiculo[] array){
-	for(int i=(array.length/2)-1;i>=0;i--){
-		heapfy(array,i,array.length);
+    public static void heapsort(Veiculo[] array,int n){
+	for(int i=(n/2)-1;i>=0;i--){
+		heapfy(array,i,n);
 	}
-	for(int i=array.length-1;i>0;i--){
+	for(int i=n-1;i>0;i--){
 		swap(array,0,i);
 		heapfy(array,0,i);	
 	}
@@ -196,9 +203,18 @@ class LeitorCsv {
 public class Main{
 	public static void main(String[] args) throws FileNotFoundException{
 		Veiculo[] veiculos=LeitorCsv.leitorCsv();
-		Veiculo.heapsort(veiculos);
-		for(int i=0;i<veiculos.length;i++){
-			System.out.println(veiculos[i].format());
+		Veiculo[] selecionados=new Veiculo[veiculos.length];
+		int qtd=0,id;
+		Scanner sc=new Scanner(System.in);
+		id=sc.nextInt();
+		while(id!=-1){
+			selecionados[qtd]=Veiculo.getVeiculo(veiculos,id);
+			id=sc.nextInt();
+			qtd++;
+		}	
+		Veiculo.heapsort(selecionados,qtd);
+		for(int i=0;i<qtd;i++){
+			System.out.println(selecionados[i].format());
 		}
 	}	
 }

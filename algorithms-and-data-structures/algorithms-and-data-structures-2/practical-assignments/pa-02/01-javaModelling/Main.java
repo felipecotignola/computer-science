@@ -109,6 +109,14 @@ class Veiculo {
     public double getCo2() { return co2; }
     public boolean getTurbo() { return turbo; }
     public Data getDataRegistro() { return dataRegistro; }
+    public static Veiculo getVeiculo(Veiculo[] array,int id){
+	for(int i=0;i<array.length;i++){
+		if(array[i].getId()==id){
+			return array[i];
+		}
+	}
+	return null;
+    }
 
     //formatar veiculo
     public String format() {
