@@ -123,7 +123,7 @@ void formatVeiculo(Veiculo* veiculo,char* strFinal) {
     }
     char dataStr[20];
     formatData(&(veiculo->dataRegistro), dataStr);
-    sprintf(str, "[%d ## %s ## %s ## %d ## %s ## %s ## %d ## %lf ## %s ## %s ## %lf ## %lf ## %lf ## %s ## %s]", getId(veiculo), getMarca(veiculo), getModelo(veiculo), getAnoVeiculo(veiculo), getCategoria(veiculo), getCombustivel(veiculo), getCilindros(veiculo), getCilindrada(veiculo), getTransmissao(veiculo), getTracao(veiculo), getConsumoCidade(veiculo), getConsumoEstrada(veiculo), getCo2(veiculo), turbo, dataStr);
+    sprintf(str, "[%d ## %s ## %s ## %d ## %s ## [%s] ## %d ## %.1f ## %s ## %s ## %.2f ## %.2f ## %.1f ## %s ## %s]", getId(veiculo), getMarca(veiculo), getModelo(veiculo), getAnoVeiculo(veiculo), getCategoria(veiculo), getCombustivel(veiculo), getCilindros(veiculo), getCilindrada(veiculo), getTransmissao(veiculo), getTracao(veiculo), getConsumoCidade(veiculo), getConsumoEstrada(veiculo), getCo2(veiculo), turbo, dataStr);
      strcopy(strFinal,str);
 }
 
@@ -172,6 +172,7 @@ Veiculo* leitorCsv(int* qtd) {
 }
 int main(){
 	int qtd=0;	
-	Veiculo* array=leitorCsv(&qtd);
+	Veiculo* veiculos=leitorCsv(&qtd);
+	free(veiculos);
 	return 0;
 }

@@ -112,7 +112,7 @@ class Veiculo {
 
     //formatar veiculo
     public String format() {
-        return String.format("[%d ## %s ## %s ## %d ## %s ## %s ## %d ## %f ## %s ## %s ## %f ## %f ## %f ## %b ## %s]", id, marca, modelo, ano, categoria, combustivel, cilindros, cilindrada, transmissao, tracao, consumoCidade, consumoEstrada, co2, turbo, dataRegistro.format());
+        return String.format("[%d ## %s ## %s ## %d ## %s ## [%s] ## %d ## %1.f ## %s ## %s ## %.2f ## %.2f ## %.1f ## %b ## %s]", id, marca, modelo, ano, categoria, combustivel, cilindros, cilindrada, transmissao, tracao, consumoCidade, consumoEstrada, co2, turbo, dataRegistro.format());
     }
 
     //setters veiculo
