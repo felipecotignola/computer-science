@@ -1,0 +1,246 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//struct Data
+typedef struct {
+    int dia;
+    int mes;
+    int ano;
+} Data;
+
+//strcpy
+void strcopy(char* dest, char* origem) {
+    while (*origem != '\0') {
+        *dest = *origem;
+        dest++;
+        origem++;
+    }
+    *dest = '\0';
+}
+
+//construtor Data
+void DataConstrutor(Data* data, int dia, int mes, int ano) {
+    data->dia = dia;
+    data->mes = mes;
+    data->ano = ano;
+}
+
+//parse Data
+Data parseData(char* str) {
+    Data data;
+    sscanf(str, "%d-%d-%d", &data.ano, &data.mes, &data.dia);
+    return data;
+}
+
+//getters Data
+int getAnoData(Data* data) { return data->ano; }
+int getMesData(Data* data) { return data->mes; }
+int getDiaData(Data* data) { return data->dia;}
+
+//formatar Data
+void formatData(Data* data, char* str) {
+    sprintf(str, "%02d-%02d-%04d", data->dia, data->mes, data->ano);
+}
+
+//struct Veiculo
+typedef struct {
+    int id;
+    char marca[256];
+    char modelo[256];
+    int ano;
+    char categoria[256];
+    char combustivel[256];
+    int cilindros;
+    double cilindrada;
+    char transmissao[256];
+    char tracao[256];
+    double consumoCidade;
+    double consumoEstrada;
+    double co2;
+    int turbo;
+    Data dataRegistro;
+} Veiculo;
+
+//parse Veiculo
+Veiculo parseVeiculo(char* str) {
+    char* atributos[15];
+    atributos[0] = strtok(str, ",");
+    int i = 1;
+    while (i < 15) {
+        atributos[i] = strtok(NULL, ",");
+        i++;
+    }
+    Veiculo strct;
+    strct.id = atoi(atributos[0]);
+    strcopy(strct.marca, atributos[1]);
+    strcopy(strct.modelo, atributos[2]);
+    strct.ano = atoi(atributos[3]);
+    strcopy(strct.categoria, atributos[4]);
+    strcopy(strct.combustivel, atributos[5]);
+    strct.cilindros = atoi(atributos[6]);
+    strct.cilindrada = atof(atributos[7]);
+    strcopy(strct.transmissao, atributos[8]);
+    strcopy(strct.tracao, atributos[9]);
+    strct.consumoCidade = atof(atributos[10]);
+    strct.consumoEstrada = atof(atributos[11]);
+    strct.co2 = atof(atributos[12]);
+    strct.turbo = (strcmp(atributos[13], "true") == 0);
+    strct.dataRegistro = parseData(atributos[14]);
+    return strct;
+}
+
+//getters Veiculo
+int getId(Veiculo* strct) { return strct->id; }
+char* getMarca(Veiculo* strct) { return strct->marca; }
+char* getModelo(Veiculo* strct) { return strct->modelo; }
+int getAnoVeiculo(Veiculo* strct){ return strct->ano; }
+char* getCategoria(Veiculo* strct) { return strct->categoria; }
+char* getCombustivel(Veiculo* strct) { return strct->combustivel; }
+int getCilindros(Veiculo* strct) { return strct->cilindros; }
+double getCilindrada(Veiculo* strct) { return strct->cilindrada; }
+char* getTransmissao(Veiculo* strct) { return strct->transmissao; }
+char* getTracao(Veiculo* strct) { return strct->tracao; }
+double getConsumoCidade(Veiculo* strct) { return strct->consumoCidade; }
+double getConsumoEstrada(Veiculo* strct) { return strct->consumoEstrada; }
+double getCo2(Veiculo* strct) { return strct->co2; } 
+int getTurbo(Veiculo* strct) { return strct->turbo; }
+Data getDataRegistro(Veiculo* strct) { return strct->dataRegistro; }
+Veiculo getVeiculo(Veiculo* array,int n,int id){
+	for(int i=0;i<n;i++){
+		if(getId(&array[i])==id){
+			return array[i];
+		}
+	}
+}
+
+//setters Veiculo
+void setConsumoCidade(Veiculo* strct, double n) { strct->consumoCidade = n; }
+void setConsumoEstrada(Veiculo* strct, double n) { strct->consumoEstrada = n; }
+void setCo2(Veiculo* strct, double n) { strct->co2 = n; }
+
+//format Veiculo
+void formatVeiculo(Veiculo* veiculo,char* strFinal) {
+    char str[1024];
+    char turbo[6];
+    if (veiculo->turbo == 1) {
+        strcopy(turbo, "true");
+    } else {
+        strcopy(turbo, "false");
+    }
+    char dataStr[20];
+    formatData(&(veiculo->dataRegistro), dataStr);
+    sprintf(str, "[%d ## %s ## %s ## %d ## %s ## [%s] ## %d ## %.1f ## %s ## %s ## %.2f ## %.2f ## %.1f ## %s ## %s]", getId(veiculo), getMarca(veiculo), getModelo(veiculo), getAnoVeiculo(veiculo), getCategoria(veiculo), getCombustivel(veiculo), getCilindros(veiculo), getCilindrada(veiculo), getTransmissao(veiculo), getTracao(veiculo), getConsumoCidade(veiculo), getConsumoEstrada(veiculo), getCo2(veiculo), turbo, dataStr);
+     strcopy(strFinal,str);
+}
+
+void swap(Veiculo* array,int i,int j){
+	Veiculo tmp=array[i];
+	array[i]=array[j];
+	array[j]=tmp;
+}
+
+//get size
+int size(char* str) {
+    int count = 0;
+    while (*str != '\0') {
+        count++;
+        str++;
+    }
+    return count;
+}
+
+//ler linha
+int readline(char* str, int tam, FILE* csv) {
+    if (fgets(str, tam, csv) == NULL) {
+        return 0;
+    }
+    int len=size(str);
+    if(str[len-1]=='\n'){
+	str[len-1]='\0';
+	return 1;
+    }
+    return 1;
+}
+
+//leitor csv e getter de quantidade de linhas por ponteiro
+Veiculo* leitorCsv(int* qtd) {
+    FILE* csv = fopen("/tmp/veiculos.csv", "r");
+    if(csv==NULL){ return NULL;}
+    char linha[1024];
+    readline(linha, 1024, csv); // Pula o cabeçalho 
+    while (readline(linha, 1024, csv) != 0){
+        (*qtd)++;
+    }
+    rewind(csv);
+    Veiculo* veiculos = (Veiculo*)malloc(*qtd * sizeof(Veiculo));
+    int i = 0;
+    readline(linha, 1024, csv); // Pula o cabeçalho
+    while (readline(linha, 1024, csv) != 0 && i < *qtd) {
+        veiculos[i] = parseVeiculo(linha);
+        i++;
+    }
+    fclose(csv);
+    return veiculos;
+}
+
+//quicksort
+void quicksort(Veiculo* array,int esq,int dir){
+	double pivo=getConsumoEstrada(&array[(dir-esq)/2]);
+	char pivo2[256];
+	strcopy(pivo2,getMarca(&array[(dir-esq)/2]));		
+	int i=esq,j=dir;
+	while(i<j){
+		while(getConsumoEstrada(&array[i])<=pivo){
+			if(getConsumoEstrada(&array[i])==pivo){
+				if(strcmp(getMarca(&array[i]),pivo2)<0){
+					i++;
+				}
+			} else{
+				i++;
+			}	
+		}
+		while(getConsumoEstrada(&array[j])>=pivo){
+			if(getConsumoEstrada(&array[j])==pivo){
+				if(strcmp(getMarca(&array[j]),pivo2)>0){
+					j--;
+				}
+			} else{
+				j--;
+			}	
+		}
+		if(i<=j){
+			swap(array,i,j);
+			i++;
+			j--;
+		}
+	}
+	if(esq<j){
+		quicksort(array,esq,j);
+	}
+	if(i<dir){
+		quicksort(array,i,dir);
+	}
+}
+int main(){
+	int qtd=0;	
+	Veiculo* veiculos=leitorCsv(&qtd);
+	Veiculo* selecionados=malloc(qtd*sizeof(Veiculo));
+	int id;
+	int j=0;
+	scanf("%d",&id);
+	while(id!=-1){
+		selecionados[j]=getVeiculo(veiculos,qtd,id);
+		j++;
+		scanf("%d",&id);
+	}	
+	quicksort(selecionados,0,j-1);
+	char str[1024];
+	for(int i=0;i<j;i++){
+		formatVeiculo(&selecionados[i],str);
+		printf("%s\n",str);	
+	}	
+	free(veiculos);
+	free(selecionados);
+	return 0;
+} 

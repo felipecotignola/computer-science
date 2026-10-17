@@ -40,7 +40,7 @@ int getDiaData(Data* data) { return data->dia;}
 
 //formatar Data
 void formatData(Data* data, char* str) {
-    sprintf(str, "%02d-%02d-%04d", data->dia, data->mes, data->ano);
+    sprintf(str, "%02d/%02d/%04d", data->dia, data->mes, data->ano);
 }
 
 //struct Veiculo
@@ -106,6 +106,13 @@ double getConsumoEstrada(Veiculo* strct) { return strct->consumoEstrada; }
 double getCo2(Veiculo* strct) { return strct->co2; } 
 int getTurbo(Veiculo* strct) { return strct->turbo; }
 Data getDataRegistro(Veiculo* strct) { return strct->dataRegistro; }
+Veiculo getVeiculo(Veiculo* array,int n, int id){
+	for(int i=0;i<n;i++){
+		if(getId(&array[i])==id){
+			return array[i];
+		}
+	}
+}
 
 //setters Veiculo
 void setConsumoCidade(Veiculo* strct, double n) { strct->consumoCidade = n; }
