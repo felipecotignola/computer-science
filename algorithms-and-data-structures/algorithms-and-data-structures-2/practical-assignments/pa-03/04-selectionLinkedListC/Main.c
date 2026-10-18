@@ -2,74 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-//struc node
-typedef struct Node{
-	Veiculo v;
-	struct Node* prox;
-}Node;
 
-//construtor node
-Node newNode(Veiculo v){
-	Node* n=malloc(sizeof(Node));
-	n->v=n;
-	n->prox=NULL;
-}
-
-//struct lista
-typedef struct List{
-	Node* head;
-	Node* tail;
-	int q;
-}List;
-
-//construtor Lista
-List newList(){
-	List* l=malloc(sizeof(List));
-	Veiculo v;
-	Node* n=newNode(v);
-	l->head=n;
-	l->tail=n;
-}
-
-//inserir (so preciso da inserir no fima da lista)
-void inserirFim(List* l, Veiculo v){
-	Node* n=newNode(v);
-	l->tail->prox=n;
-	l->tail=n;
-}
-
-//condicao do selection
-int check(Node* maior,Node* j){
-	if(strcmp(getModelo(&(j->v)),getModelo(&(maior->v)))<0){
-		return 1;
-	} else {
-		return 0;
-	}
-	
-}
-//selection sort
-void selection(List* l){
-	for(Node* i=l->head->prox;i!=l->t;i=i->prox){
-		Node* maior=i; 
-		for(Node* j=maior->prox;j!=NULL;j=j->prox){
-			if(check(maior,j)){
-				maior=j;
-			}
-		}
-		Node* tmp=i;
-		i=maior;
-		maior=tmp;
-	}
-}
-
-//printar a lista
-void print(List* l){
-	char str[1024];
-	for(Node* i=l->head->prox;i!=NULL;i=i->prox){
-		formatVeiculo(i->v,str);
-		printf("%s\n",str);
-	}
-}
 
 //struct Data
 typedef struct {
@@ -246,6 +179,75 @@ Veiculo* leitorCsv(int* qtd) {
     fclose(csv);
     return veiculos;
 }
+//struc node
+typedef struct Node{
+	Veiculo v;
+	struct Node* prox;
+}Node;
+
+//construtor node
+Node newNode(Veiculo v){
+	Node* n=malloc(sizeof(Node));
+	n->v=n;
+	n->prox=NULL;
+}
+
+//struct lista
+typedef struct List{
+	Node* head;
+	Node* tail;
+	int q;
+}List;
+
+//construtor Lista
+List newList(){
+	List* l=malloc(sizeof(List));
+	Veiculo v;
+	Node* n=newNode(v);
+	l->head=n;
+	l->tail=n;
+}
+
+//inserir (so preciso da inserir no fima da lista)
+void inserirFim(List* l, Veiculo v){
+	Node* n=newNode(v);
+	l->tail->prox=n;
+	l->tail=n;
+}
+
+//condicao do selection
+int check(Node* maior,Node* j){
+	if(strcmp(getModelo(&(j->v)),getModelo(&(maior->v)))<0){
+		return 1;
+	} else {
+		return 0;
+	}
+	
+}
+//selection sort
+void selection(List* l){
+	for(Node* i=l->head->prox;i!=l->t;i=i->prox){
+		Node* maior=i; 
+		for(Node* j=maior->prox;j!=NULL;j=j->prox){
+			if(check(maior,j)){
+				maior=j;
+			}
+		}
+		Node* tmp=i;
+		i=maior;
+		maior=tmp;
+	}
+}
+
+//printar a lista
+void print(List* l){
+	char str[1024];
+	for(Node* i=l->head->prox;i!=NULL;i=i->prox){
+		formatVeiculo(i->v,str);
+		printf("%s\n",str);
+	}
+}
+
 int main(){
 	int qtd=0;	
 	Veiculo* veiculos=leitorCsv(&qtd);
