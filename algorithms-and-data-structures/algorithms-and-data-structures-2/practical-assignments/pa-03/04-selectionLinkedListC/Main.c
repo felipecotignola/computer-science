@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 
 
 
@@ -186,10 +187,11 @@ typedef struct Node{
 }Node;
 
 //construtor node
-Node newNode(Veiculo v){
+Node* newNode(Veiculo v){
 	Node* n=malloc(sizeof(Node));
-	n->v=n;
+	n->v=v;
 	n->prox=NULL;
+	return n;
 }
 
 //struct lista
@@ -200,12 +202,13 @@ typedef struct List{
 }List;
 
 //construtor Lista
-List newList(){
+List* newList(){
 	List* l=malloc(sizeof(List));
 	Veiculo v;
 	Node* n=newNode(v);
 	l->head=n;
 	l->tail=n;
+	return l;
 }
 
 //inserir (so preciso da inserir no fima da lista)
@@ -215,27 +218,18 @@ void inserirFim(List* l, Veiculo v){
 	l->tail=n;
 }
 
-//condicao do selection
-int check(Node* maior,Node* j){
-	if(strcmp(getModelo(&(j->v)),getModelo(&(maior->v)))<0){
-		return 1;
-	} else {
-		return 0;
-	}
-	
-}
 //selection sort
 void selection(List* l){
-	for(Node* i=l->head->prox;i!=l->t;i=i->prox){
+	for(Node* i=l->head->prox;i!=l->tail;i=i->prox){
 		Node* maior=i; 
 		for(Node* j=maior->prox;j!=NULL;j=j->prox){
-			if(check(maior,j)){
+			if(strcasecmp(getModelo(&(j->v)), getModelo(&(maior->v)))<0){
 				maior=j;
 			}
 		}
-		Node* tmp=i;
-		i=maior;
-		maior=tmp;
+		Veiculo tmp=i->v;
+		i->v=maior->v;
+		maior->v=tmp;
 	}
 }
 
@@ -243,8 +237,19 @@ void selection(List* l){
 void print(List* l){
 	char str[1024];
 	for(Node* i=l->head->prox;i!=NULL;i=i->prox){
-		formatVeiculo(i->v,str);
+		formatVeiculo(&(i->v),str);
 		printf("%s\n",str);
+	}
+}
+
+//free lista toda
+void freeList(List* l){
+	Node* atual=l->head;
+	Node* prox;
+	while(atual!=NULL){
+		prox=atual->prox;
+		free(atual);
+		atual=prox;
 	}
 }
 
@@ -255,12 +260,12 @@ int main(){
 	int id;
 	scanf("%d",&id);
 	while(id!=-1){
-		inserirFim(l,getVeiculo(veiculos,id));
+		inserirFim(l,getVeiculo(veiculos,qtd,id));
 		scanf("%d",&id);	
 	}
 	selection(l);
 	print(l);
 	free(veiculos);
-	free(selecionados);
+	freeList(l);
 	return 0;
 }
