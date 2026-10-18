@@ -184,30 +184,25 @@ Veiculo* leitorCsv(int* qtd) {
     return veiculos;
 }
 
+//condicao de ordenacao do quick
+int check(double pivo,char* pivo2, Veiculo v){
+	if(getConsumoEstrada(&v)<pivo) return -1;
+	if(getConsumoEstrada(&v)>pivo) return 1;
+	return strcmp(getMarca(&v),pivo2);	
+}
+
 //quicksort
 void quicksort(Veiculo* array,int esq,int dir){
-	double pivo=getConsumoEstrada(&array[(dir-esq)/2]);
+	double pivo=getConsumoEstrada(&array[(dir+esq)/2]);
 	char pivo2[256];
-	strcopy(pivo2,getMarca(&array[(dir-esq)/2]));		
+	strcopy(pivo2,getMarca(&array[(dir+esq)/2]));		
 	int i=esq,j=dir;
-	while(i<j){
-		while(getConsumoEstrada(&array[i])<=pivo){
-			if(getConsumoEstrada(&array[i])==pivo){
-				if(strcmp(getMarca(&array[i]),pivo2)<0){
-					i++;
-				}
-			} else{
+	while(i<=j){
+		while(check(pivo,pivo2,array[i])<0){
 				i++;
-			}	
 		}
-		while(getConsumoEstrada(&array[j])>=pivo){
-			if(getConsumoEstrada(&array[j])==pivo){
-				if(strcmp(getMarca(&array[j]),pivo2)>0){
-					j--;
-				}
-			} else{
-				j--;
-			}	
+		while(check(pivo,pivo2,array[j])>0){
+			j--;
 		}
 		if(i<=j){
 			swap(array,i,j);
