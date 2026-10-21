@@ -1,4 +1,4 @@
-void insert(Node root,int x){
+Node insert(Node root,int x){
 	if(root==null){
 		return new Node(x);
 	}
@@ -11,4 +11,5 @@ void insert(Node root,int x){
 	else{
 		root->q++;
 	}
+	return root;
 }
