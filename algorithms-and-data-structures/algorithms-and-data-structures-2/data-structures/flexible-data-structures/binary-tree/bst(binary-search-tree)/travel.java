@@ -42,4 +42,7 @@ void descending(Node root){
 		printf(root.value);
 		descending(root.left);
 	}
-} 
+}
+
+//bfs
+ 
