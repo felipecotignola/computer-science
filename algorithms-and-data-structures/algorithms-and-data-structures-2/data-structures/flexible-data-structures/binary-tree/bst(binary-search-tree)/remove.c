@@ -19,7 +19,13 @@ Node* remove(Node* root, int target){
 			free(root);
 			return tmp;
 		} else {
-			
+			Node* tmp=root->right;
+			while(tmp!=NULL){
+				tmp=tmp->left;
+			}		
+			root->value=tmp->value;
+			root->left=remove(root->left,tmp->value);				j
+			return root;
 		}	
 	}	
 }
@@ -45,9 +51,14 @@ Node* remove(Node* root,int target){
 			free(root);
 			return tmp;
 		} else {
-
+			Node* tmp=root->right;
+			while(tmp!=NULL){
+				tmp=tmp->left;
+			}	
+			root->value=tmp->value;
+			root->right=remove(root->right,tmp->value);
+			return root;
 		}
-
 	}
 	
 }

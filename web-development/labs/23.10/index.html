@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="divFilmes"></div>
+    <script>
+        async function getFilmes(){
+            const divFilmes = document.getElementById('divFilmes')
+            const res = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=YOUR_API_KEY&language=pt-BR&page=1')
+        }
+    </script>
+</body>
+</html>
