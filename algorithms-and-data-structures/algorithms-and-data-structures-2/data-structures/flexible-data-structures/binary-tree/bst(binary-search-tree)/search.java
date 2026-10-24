@@ -1,11 +1,13 @@
 Node search(Node root, int target){
 	if(node.value==target || node==null){
 		return root;
-	}	
+	}
+	Node n;	
 	else if(root.value<target){
-		search(root.left,target);
+		n=search(root.left,target);
 	}
 	else{
-		search(root.right,target);
+		n=search(root.right,target);
 	}
+	return n;
 }
