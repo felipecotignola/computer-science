@@ -27,7 +27,8 @@ Node* remove(Node* root, int target){
 			root->left=remove(root->left,tmp->value);				j
 			return root;
 		}	
-	}	
+	}
+	return root;	
 }
 
 //second implementation if target is a parent
@@ -60,5 +61,5 @@ Node* remove(Node* root,int target){
 			return root;
 		}
 	}
-	
+	return root;	
 }
