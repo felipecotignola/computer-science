@@ -14,7 +14,7 @@ void getHeight(Node* root){
 		return -1;
 	}
 	int left=getHeight(root.left);
-	int right=getHeight(root.left);
+	int right=getHeight(root.right);
 	return (left>dir? left:dir)+1;
 }
 
