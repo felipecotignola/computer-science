@@ -20,6 +20,15 @@
 		EX:	
 			UH				FR 01 |  FR 02 |  FR 03 |  FR 04  | FR 05
 			  uh 01 - vehicles register	  x   |        |        |   x     |
-		          uh 02 - region register             |    x   |        |         |x   x
+		          uh 02 - region register             |    x   |        |         |   x   
 
+4 - UML (UNIFIED MODELLING LANGUAGE) : visual language used to represent,especify and doccument software systems. It allows us to visualize how a system works and wich are its interactions, before even starting coding. For an example, before developing a freight transport, we can represent who uses the system, wich functionalities it will offer e how the process of transport queries work
+	
+5 - diagrama atividades
 
+//FUNDAMENTALS
+	MODELLING: representing in a simplified way a system or process
+	DIAGRAM: visual representation of elements and theirs relationships
+	ACTOR: person or external system wich interacts with the modelled system
+	CASES OF USE: functionality offered by the system to fullfill an actor objective
+	RELATIONSHIP: represents a conection between elements from the modelling

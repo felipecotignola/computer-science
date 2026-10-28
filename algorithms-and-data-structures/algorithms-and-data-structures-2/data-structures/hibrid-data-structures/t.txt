@@ -1,0 +1,6 @@
+implementar uma estrutura hibrida ->  arvore com lista (cada celula lista contem um objeto contato) e tem que se inserir nessa lista um nome em ordem alfabetica e pesquisar o nome
+					o no da arvore tem a letra e esq e dir
+					
+					caracteristicas do pesquisar quando encontrar um nome maior eu paro a pesquisa pq eh garantido que n tem o nome q eu quero
+
+
