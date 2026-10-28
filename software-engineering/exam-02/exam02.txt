@@ -1,0 +1,25 @@
+1 - USER HISTORIES: Describes the necessities that an user has 
+		Structure:
+		        UH (USER HISTORY) 01: REGISTER VEHICLES
+				AS {Agent}
+				WANTS {functionality}
+				TO {benefit from}
+
+
+2.1 - FUNCTIONAL REQUISITES: Describes the operations and services that the platform shall offer
+	*What the platform needs to do, not what the user shall do manually
+		EX: 
+			FR (FUNCTIONAL REQUISITES) 01:
+				The system shall allow registering your own vehicles or vehicles from thirds
+
+2.1- NON FUNCTIONAL REQUISITES: Describes caracteristics of quality,restrictions or conditions of the system operations
+	EX:
+		NFR (NON FUNCTIONAL REQUISITES) 01: The system shall present the results from sales queries in up to 3 seconds, 
+
+3 - TRACEABILITY MATRIX : Relates USER HISTORIES to the FUCNTIONAL REQUISITES wich contributes to the system and user
+		EX:	
+			UH				FR 01 |  FR 02 |  FR 03 |  FR 04  | FR 05
+			  uh 01 - vehicles register	  x   |        |        |   x     |
+		          uh 02 - region register             |    x   |        |         |x   x
+
+

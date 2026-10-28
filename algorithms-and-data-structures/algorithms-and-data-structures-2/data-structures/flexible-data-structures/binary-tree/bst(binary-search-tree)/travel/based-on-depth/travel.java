@@ -44,5 +44,14 @@ void descending(Node root){
 	}
 }
 
-//bfs
+//ancestrals
+void printAncestral(Node root,int target){
+	if(root.element<target){
+		printAncestraL(root.right,target);
+	} else if(root.element>target){
+		printAncestral(root.left,target);
+	}
+	System.out.prinln(root.element);
+}
+
  
