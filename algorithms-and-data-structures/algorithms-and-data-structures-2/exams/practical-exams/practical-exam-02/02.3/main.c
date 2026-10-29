@@ -72,6 +72,7 @@ void interscale(Hack* arr,int left,int middle,int right){
 }
 
 void mergesort(Hack* arr,int left,int right){
+	//shouldve used if instead of while 
 	while(left<right){
 		int middle=(right+left)/2;
 		mergesort(arr,left,middle);
