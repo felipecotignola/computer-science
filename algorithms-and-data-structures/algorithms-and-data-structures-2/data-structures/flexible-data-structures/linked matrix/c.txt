@@ -1,0 +1,4 @@
+inserir ordenado remover coluna remover linha remover pares
+inverter linha/ inverter coluna
+inverter diagonal principal
+
