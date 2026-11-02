@@ -1,1 +1,1 @@
-inserir/remover pares com e sem cabeca
+remover pares com e sem cabeca
