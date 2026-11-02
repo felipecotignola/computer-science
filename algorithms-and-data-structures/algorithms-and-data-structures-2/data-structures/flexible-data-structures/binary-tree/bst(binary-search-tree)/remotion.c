@@ -19,9 +19,9 @@ Node* remove(Node* root, int target){
 			free(root);
 			return tmp;
 		} else {
-			Node* tmp=root->right;
+			Node* tmp=root->left;
 			while(tmp!=NULL){
-				tmp=tmp->left;
+				tmp=tmp->right;
 			}		
 			root->value=tmp->value;
 			root->left=remove(root->left,tmp->value);				j

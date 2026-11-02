@@ -46,6 +46,9 @@ void descending(Node root){
 
 //ancestrals
 void printAncestral(Node root,int target){
+	if(root==null){
+		return;
+	}
 	if(root.element<target){
 		printAncestraL(root.right,target);
 	} else if(root.element>target){
