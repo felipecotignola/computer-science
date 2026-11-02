@@ -57,5 +57,3 @@ Matrix* newMatrix(int i,int j){
 	}
 	return m;
 }
-
-
