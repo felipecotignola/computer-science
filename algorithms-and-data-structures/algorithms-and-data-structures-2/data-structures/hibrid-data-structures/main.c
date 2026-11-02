@@ -7,11 +7,9 @@ typedef struct Contact{
 } Contact;
 
 Contact newContact(char* str){
-	Contact* c=malloc(sizeof(Contact));
-	strcpy(c->name,str);
-	Contact cntct=*c;
-	free(c);
-	return cntct;
+	Contact c;
+	strcpy(c.name,str);
+	return c;
 }
 
 typedef struct Cell{
@@ -38,7 +36,19 @@ List* newList(Contact c){
 }
 
 void insertOrdered(List* l,Contact c){
-		
+	Cell* tmp=l->start;
+	if(strcmp(tmp->c.name,c.name)>0){
+		Cell* cell=newCell(c);
+		cell->next=tmp;
+		l->start=cell;
+		return;	
+	} 
+	while(tmp->next!=NULL && strcmp(tmp->next->c.name,c.name)<0){
+		tmp=tmp->next;
+	}
+	Cell* cell=newCell(c);
+	cell->next=tmp->next;
+	tmp->next=cell;
 }
 typedef struct Node{
 	char letter;
@@ -47,6 +57,13 @@ typedef struct Node{
 	struct Node* right;
 } Node;
 
+int searchList(List* l,char* str){
+	Cell* tmp=l->start;
+	while(tmp!=NULL && strcmp(tmp->c.name,str)<0){
+		tmp=tmp->next;	
+	}
+	return tmp!=NULL && strcmp(tmp->c.name,str)==0;
+}
 Node* newNode(Contact c){
 	Node* n=malloc(sizeof(Node));
 	n->letter=c.name[0];
@@ -60,7 +77,7 @@ typedef struct Bst{
 	Node* root;
 } Bst;
 
-Node* newBst(){
+Bst* newBst(){
 	Bst* bst=malloc(sizeof(Bst));
 	bst->root=NULL;
 	return bst;
@@ -77,4 +94,19 @@ Node* insertion(Node* root,Contact c){
 		insertOrdered(root->l,c);
 	}
 	return root;
+}
+
+int searchName(Node* root,char* str){
+	if(root==NULL){
+		return 0;
+	}
+	int answ;	
+	if (root->letter<*str){
+		answ=searchName(root->right,str);	
+	} else if(root->letter>*str){
+		answ=searchName(root->left,str);
+	} else {
+		answ=searchList(root->l,str);		
+	}
+	return answ;
 }

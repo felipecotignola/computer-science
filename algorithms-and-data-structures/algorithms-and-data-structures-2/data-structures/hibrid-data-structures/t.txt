@@ -1,6 +1,24 @@
-implementar uma estrutura hibrida ->  arvore com lista (cada celula lista contem um objeto contato) e tem que se inserir nessa lista um nome em ordem alfabetica e pesquisar o nome
-					o no da arvore tem a letra e esq e dir
-					
-					caracteristicas do pesquisar quando encontrar um nome maior eu paro a pesquisa pq eh garantido que n tem o nome q eu quero
+PHONE BOOK: BST OF SORTED LISTS
 
+Implement a hybrid data structure: a binary search tree where each node holds a
+letter and a linked list of contacts.
 
+Each tree node stores:
+  - a letter (the first letter of the names it holds);
+  - a linked list whose cells each contain a Contact object (the contact's name);
+  - a pointer to the left child and a pointer to the right child.
+
+Your program must support two operations:
+
+1. Insert a contact
+   Use the first letter of the name to find the right node in the tree (create
+   it if it does not exist yet). Then insert the contact into that node's list
+   in alphabetical order.
+
+2. Search for a name
+   Use the first letter of the name to find the node in the tree, then search
+   its list. Since the list is sorted, stop the search as soon as you find a
+   name greater than the one you are looking for: it is guaranteed that the name
+   is not in the list.
+
+Print whether the name was found or not.
