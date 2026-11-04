@@ -1,4 +1,4 @@
-void quicksort(int left,int right){
+void quicksort(int* array,int left,int right){
 	int i=left, j=right, pivot=array[(left+right)/2];
 	while(i<=j){
 		while(array[i]<pivot){
@@ -16,10 +16,10 @@ void quicksort(int left,int right){
 		}
 	}
 	if(left<j){
-		quicksort(left,j);
+		quicksort(array,left,j);
 	}
-	if(right>i){
-		quicksort(i,right);
+	if(i<right){
+		quicksort(array,i,right);
 	}
 }
 /*
